@@ -17,7 +17,7 @@ header {
   z-index: 99;
   top: 0;
   background: white;
-  border-bottom: 2px solid #F0F0F1;
+  border-bottom: solid 1px #dbdbdb;
 }
 
 .homePageNavbar {
@@ -26,13 +26,35 @@ header {
 }
 
 .homePageNavbar__wrapper {
-  width: 90vw;
+  width: 77vw;
   height: 60px;
   min-width: 1000px;
   padding: 10px 15px;
 }
 
+.homePageNavbar--items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .logo--small {
-  width: 40px;
+  width: auto;
+  display: flex;
+  align-items: center;
+}
+.navbarRightMenu {
+  width: 300px;
   height: 40px;
+  justify-content: flex-end;
+  display: flex;
+  a {
+    .face-icon {
+      margin: 5px 0;
+      &:hover > svg path{
+        fill: #3597F3;
+        transition: 0.3s ease;
+      }
+    } 
+  }
 }

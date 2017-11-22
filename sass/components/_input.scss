@@ -29,3 +29,22 @@
 input {
     display:block;
 }
+
+.input--home {
+    background: #fafafa;
+    border: solid 1px #dbdbdb;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    max-height: 30px;
+    font-size: 14px;
+    border-radius: 3px;
+    color: #999;
+    cursor: text;
+    width: 200px;
+    padding: 7px 9px;
+    &:focus {
+        background: white;
+    }
+}
