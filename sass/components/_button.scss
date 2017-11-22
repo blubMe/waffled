@@ -46,3 +46,19 @@
   //   content:'';
   // }
 }
+
+
+//home //
+.button-blue {
+  padding: 10px 50px;
+  background: #0084FF;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  transition: .3s ease;
+  &:focus {
+    background: #016dcc;
+    transition: .3s ease; 
+  }
+}

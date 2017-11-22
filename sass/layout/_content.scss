@@ -97,3 +97,214 @@ section {
 
 /* ---- login.html ------- */
 // home page //
+.homeWrapper {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.homeWrapper__leftMenu , .homeWrapper__rightMenu {
+  float: left;
+  margin-top: 50px;
+  padding-top: 70px;
+}
+
+.homeWrapper__leftMenu {
+  width: 800px;
+  height: 100px;
+}
+
+.homeWrapper__rightMenu {
+  min-width: 400px;
+}
+
+.feedWrapper {
+  padding: 7px;
+}
+
+.feedHighlights {
+  display: flex;
+  justify-content: center;
+  .feedHighlights--items {
+    width: 50px;
+    margin: 0 10px;
+    height: 50px;
+    background: red;
+    border-radius: 100px;
+  }
+}
+
+.feedCreateStatus {
+  width: 100%;
+  
+}
+
+.articleFeed {
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  overflow: hidden;
+  max-width: 614px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  border-radius: 3px;
+  .articleFeed__header {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    height: 60px;
+    padding: 10px;
+    .postFeed {
+      display: flex;
+      align-items: center;
+      .postAvatar {
+        overflow: hidden;
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+      a {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-left: 10px;
+        font-size: 14px;
+      }
+    }
+    .postReply {
+      margin-right: 5px;
+        .button--ghost {
+          border: 2px solid #0084FF;
+          padding: 5px 10px;
+          background: transparent;
+          border-radius: 5px;
+          color: #0084FF;
+          font-weight: bold;
+          cursor: pointer;
+          outline: none;
+          transition: .3s ease;
+          &:hover, &:focus {
+              background: #0084FF;
+              color: white;
+              transition: .3s ease;
+          }
+          &:focus {
+            background: #016dcc!important;
+            border-color: #016dcc!important;
+          }
+        }
+    }
+  }
+}
+
+.articleFeed__content {
+  position: relative;
+  .filterDown {
+    position: absolute;
+    bottom: 0;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 0.65) 100%);
+    width: 100%;
+    height: 250px;
+  }
+}
+
+.imageFeedContent {
+  overflow: hidden;
+  width: 100%;
+  height: 450px;
+  img , video{
+    width: 100%;
+    height: auto;
+  }
+}
+.postLove {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.articleFeed__footer {
+  padding: 15px;
+  .postDesc {
+    margin-bottom: 15px;
+    span {
+      font-size: 13px;
+      .postDescOwner {
+        font-weight: bold;
+      }
+    }
+  }
+  .postCommentShow {
+    border-left: 2px solid #e6e6e6;
+    padding: 10px 15px;
+    .postCommentShow__people {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      .CommentAvatar {
+        width: 25px;
+        height: 25px;
+        overflow: hidden;
+        border-radius: 50%;
+        margin-right: 10px;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+      span {
+        font-size: 13px;
+        margin-right: 5px;
+      }
+    }
+  }
+} 
+
+.recomendWrapper {
+  position: fixed;
+  padding-top: 20px;
+  .recomendWrapper__create {
+    width: 100%;
+  }
+}
+
+.recomendWrapper__friends {
+  margin-top: 30px;
+  h4 {
+    color: #929292;
+    margin-bottom: 15px;
+  }
+}
+.friendStickProfile {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+.friendStickProfile__avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+}
+.friendStickProfile__title {
+  span {
+    font-size: 12px;
+    color: #929292;
+  }
+}
