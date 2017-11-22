@@ -1,0 +1,99 @@
+section {
+  min-height : 100vh;
+}
+
+.wrap-login {
+  width: 800px;
+  height: 400px;
+  top: 11em;
+  left: 17em;
+  position: absolute;
+  .wrap-cover, .wrap-login__form {
+    width: 47%;
+    height: inherit;
+    float:left;
+    &::before , &::after {
+      clear:both;
+    }
+  }
+  .wrap-cover {
+    // background-color : white;
+    .wrap-cover__title {
+      width: 350px;
+      padding-right: 30px;
+      h1 {
+        margin-bottom: 10px;
+      }
+    }
+    .wrap-cover__search {
+      width: 100%;
+      height: 100px;
+      position: relative;
+      padding: 20px 12px 12px 0;
+    }
+  }
+  .wrap-login__form {
+    background-color: white;
+    border-radius: 3px;
+    width: 45%;
+    overflow: hidden;
+    .wrap-login__form__header {
+      width: 100%;
+      height: 60px;
+      padding-top: 17px;
+      text-align: center;
+      h4 {
+        color:#444444;
+        font-family: 'Open Sans';
+      }
+    }
+    .form-login {
+      width: 100%;
+      padding: 15px 45px;
+      height: 160px;
+    }
+    .wrap-otherauth {
+      width: 100%;
+      height: 150px;
+    }
+  }
+}
+
+.showcase {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  .showcase-bg {
+    height: inherit;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+}
+
+.showcase-overlay{
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left:0;
+  right:0;
+  background-color: rgba(0, 0, 0, .4);
+}
+
+.wrap-otherauth {
+  padding: 15px 45px;
+  text-align: center;
+  .wrap-otherauth__title {
+    margin-bottom: 12px;
+    position:relative;
+    span{
+      color:#757575;
+      font-family: 'Open Sans';
+      font-weight: 600;
+      font-size:14px;
+    }
+  }
+}
+
+/* ---- login.html ------- */
+// home page //
