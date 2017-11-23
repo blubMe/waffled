@@ -320,10 +320,8 @@ section {
   height: 250px;
   overflow: hidden;
   position: relative;
-  img {
-    width: 100%;
-    height: auto;
-  }
+  background-size: cover;
+  background-position: center;
 }
 
 .filterDown {
@@ -341,7 +339,7 @@ section {
   position: absolute;
   overflow: hidden;
   top: 70px;
-  left: 45%;
+  left: 44%;
   img {
     width: 100%;
     height: auto;
@@ -361,4 +359,79 @@ section {
 .usernameProfile {
   font-size: 18px;
   color: #7b7b7b;
+}
+
+.bioProfile {
+  margin-top: 5px;
+  color: #929292;
+}
+
+.socialProfile {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  color: #929292;
+  p {
+    margin: 0 5px;
+    font-weight: bold;
+  }
+  .socialProfile__facebook a{
+    color: #5EACF3;
+  }
+  .socialProfile__instagram a{
+    color: #F44646;
+  }
+}
+
+.editProfileWrapper {
+  margin: 30px 0 20px;
+}
+
+.homeWrapper--profile__footer {
+  @extend .homeWrapper--profile__content;
+  border-top: 0;
+  text-align: left;
+}
+
+.postProfileFeed__content {
+  margin-left: 15px;
+}
+
+.postProfileFeed__header {
+  padding-bottom: 20px;
+}
+
+.postProfileFeed--items {
+  display: flex;
+  margin-bottom: 30px;
+  .postProfileFeedItems--avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .postProfileFeedItems--content{
+    margin-left: 15px;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    overflow: hidden;
+    .postProfileFeedItems--images {
+      width: 400px;
+      height: 300px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+.postProfileFeedItems--desc {
+  padding: 10px;
+  font-size: 14px;
+  width: 385px;
 }
