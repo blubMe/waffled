@@ -324,19 +324,101 @@ section {
 
 .bgCoverProfile {
   width: inherit;
-  height: 300px;
+  height: 250px;
   overflow: hidden;
-  position: relative; }
-  .bgCoverProfile img {
-    width: 100%;
-    height: auto; }
+  position: relative;
+  background-size: cover;
+  background-position: center; }
 
 .filterDown {
   position: absolute;
   bottom: 0;
   background-image: linear-gradient(to bottom, transparent 0%, transparent 59%, rgba(0, 0, 0, 0.65) 100%);
   width: 100%;
-  height: 200px; }
+  height: 250px; }
+
+.profileAvatar {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  position: absolute;
+  overflow: hidden;
+  top: 70px;
+  left: 44%; }
+  .profileAvatar img {
+    width: 100%;
+    height: auto; }
+
+.homeWrapper--profile__content, .homeWrapper--profile__footer {
+  padding: 20px;
+  background: white;
+  border: 1px solid #e6e6e6;
+  text-align: center; }
+  .homeWrapper--profile__content h2, .homeWrapper--profile__footer h2 {
+    margin-bottom: 10px; }
+
+.usernameProfile {
+  font-size: 18px;
+  color: #7b7b7b; }
+
+.bioProfile {
+  margin-top: 5px;
+  color: #929292; }
+
+.socialProfile {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  color: #929292; }
+  .socialProfile p {
+    margin: 0 5px;
+    font-weight: bold; }
+  .socialProfile .socialProfile__facebook a {
+    color: #5EACF3; }
+  .socialProfile .socialProfile__instagram a {
+    color: #F44646; }
+
+.editProfileWrapper {
+  margin: 30px 0 20px; }
+
+.homeWrapper--profile__footer {
+  border-top: 0;
+  text-align: left; }
+
+.postProfileFeed__content {
+  margin-left: 15px; }
+
+.postProfileFeed__header {
+  padding-bottom: 20px; }
+
+.postProfileFeed--items {
+  display: flex;
+  margin-bottom: 30px; }
+  .postProfileFeed--items .postProfileFeedItems--avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    overflow: hidden; }
+    .postProfileFeed--items .postProfileFeedItems--avatar img {
+      width: 100%;
+      height: auto; }
+  .postProfileFeed--items .postProfileFeedItems--content {
+    margin-left: 15px;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    overflow: hidden; }
+    .postProfileFeed--items .postProfileFeedItems--content .postProfileFeedItems--images {
+      width: 400px;
+      height: 300px;
+      overflow: hidden; }
+      .postProfileFeed--items .postProfileFeedItems--content .postProfileFeedItems--images img {
+        width: 100%;
+        height: auto; }
+
+.postProfileFeedItems--desc {
+  padding: 10px;
+  font-size: 14px;
+  width: 385px; }
 
 footer {
   width: 100%;
@@ -409,6 +491,15 @@ button {
 .button-blue--small {
   border: none;
   padding: 7px 15px !important; }
+
+.button--editProfile {
+  padding: 10px 15px;
+  border: 2px solid #929292;
+  border-radius: 30px;
+  background: transparent;
+  color: #7b7b7b;
+  text-align: center;
+  font-weight: bold; }
 
 .search-login {
   background-color: rgba(238, 238, 238, 0.4);
