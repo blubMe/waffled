@@ -1,19 +1,34 @@
+<?php
+
+  // REQUIRED CORE FILE
+  require_once('core/init.php');
+
+    if ( getSession('user') ) {
+        header('location: home.php');
+    }
+
+    if ( post('login') ) {
+      $_loginStatus = Auth(post('username'), post('password'));
+    }
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="icon" href="" type="image/png"> -->
     <link rel="stylesheet" href="lib/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
-    <title></title>
+    <title>Sosial Hukum</title>
   </head>
   <body>
   <header>
     <div class="header-main--login">
       <nav>
-        navbar
+        <!-- navbar -->
       </nav>
     </div>
   </header>
@@ -24,7 +39,7 @@
     <div class="wrap-login">
       <div class="wrap-cover">
         <div class="wrap-cover__title">
-          <h1 class="bigheading">Get Envolved</h1>
+          <h1 class="bigheading">Sosial Hukum</h1>
           <p class="subheading">Create A Future Of Social Life , excite the world. Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
         </div>
         <div class="wrap-cover__search">
@@ -35,17 +50,17 @@
         <div class="wrap-login__form__header">
           <h4>Logo_Here</h4>
         </div>
-        <form class="form-login" action="" method="post">
-          <input class="login-input" type="text" name="imel" value="" placeholder="Email">
-            <input class="login-input" type="password" name="paswod" value="" placeholder="Password">
-            <input class="button regis-button" type="submit" name="login" value="Lanjutkan">
+        <form class="form-login" method="post">
+          <input class="login-input" type="text" name="username" value="" placeholder="Email">
+            <input class="login-input" type="password" name="password" value="" placeholder="Password">
+            <input class="button regis-button" type="submit" name="login" value="Masuk">
         </form>
         <div class="wrap-otherauth">
           <div class="wrap-otherauth__title">
             <span>Atau</span>
           </div>
           <div class="button login-button">
-            login disini
+            Daftar
           </div>
           <div class="button login-button google-button">
             <span>
