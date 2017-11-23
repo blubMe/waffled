@@ -1,11 +1,16 @@
 <?php
+
+    // Memasukkan semua fungsi lewat file init.php
     require_once('core/init.php');
+
+    // Mengecek Session user dan mengubah variable session
     $_session = 0;
     if (getSession('user')) {
         $_session = 1;
     } else {
         $_session = 0;
     }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

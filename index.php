@@ -1,12 +1,14 @@
 <?php
 
-  // REQUIRED CORE FILE
+  // Memasukkan semua fungsi lewat file init.php
   require_once('core/init.php');
 
+    // Mendapatkan Session user jika ada langsung kehalaman Beranda
     if ( getSession('user') ) {
         header('location: home.php');
     }
 
+    // Memanggil fungsi Auth sekaligus mendapatkan error jika ada
     if ( post('login') ) {
       $_loginStatus = Auth(post('username'), post('password'));
     }

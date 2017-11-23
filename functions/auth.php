@@ -1,5 +1,6 @@
 <?php
 
+    // Membuat fungsi untuk method $_POST[]
     function post($data)
     {
         if ( !empty(trim($data)) && isset($_POST[$data]) ){
@@ -9,6 +10,7 @@
         }
     }
 
+    // Membuat fungsi Penginisialisasi Session
     function setSesssion($sessionName, $sessionValue)
     {
         if (!empty(trim($sessionName)) && !empty(trim($sessionValue)) ) {
@@ -17,7 +19,7 @@
     }
 
 
-    // LOGIN
+    // Fungsi Login
     function Auth($_username, $_password)
     {
         if( !empty(trim($_username)) && !empty(trim($_password)) )
@@ -35,11 +37,11 @@
                         }
 
                 } else {
-                    // if username == 0
+                    // Mengembalikan error jika username tidak ada di DB
                     return $error = 1;
                 }
         } else {
-            // if username and password Empty.
+            // Mengembalikan error jika username atau password kosong
             return $error = 2;
         }
     }
