@@ -1,3 +1,7 @@
+button {
+  outline: none;
+}
+
 .button {
   border:none;
   border-radius: 3px;
@@ -61,4 +65,10 @@
     background: #016dcc;
     transition: .3s ease; 
   }
+}
+
+.button-blue--small {
+  @extend .button-blue;
+  border: none;
+  padding: 7px 15px!important;
 }
