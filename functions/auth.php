@@ -1,50 +1,66 @@
 <?php
 
-    // Membuat fungsi untuk method $_POST[]
-    function post($data)
+    // Membuat Fungsi Pengecekan user yang terdaftar
+    function selectAuthCount ($table, $value)
     {
-        if ( !empty(trim($data)) && isset($_POST[$data]) ){
-            return $_POST[$data];
-        } else {
-            return false;
-        }
+        global $conn;
+        $_SQL = "SELECT * FROM $table WHERE username = '$value' OR email = '$value'";
+        return mysqli_num_rows(mysqli_query($conn, $_SQL));
     }
 
-    // Membuat fungsi Penginisialisasi Session
-    function setSesssion($sessionName, $sessionValue)
+    // Membuat Fungsi Pengambilan username
+    function selectAuth ($table, $value)
     {
-        if (!empty(trim($sessionName)) && !empty(trim($sessionValue)) ) {
-            return $_SESSION[$sessionName] = $sessionValue;
-        }
+        global $conn;
+        $_SQL = "SELECT * FROM $table WHERE username = '$value' OR email = '$value'";
+        return mysqli_fetch_array(mysqli_query($conn, $_SQL));
     }
 
-
-    // Fungsi Login
+    // Membuat Fungsi Login
     function Auth($_username, $_password)
     {
+        global $conn;
         if( !empty(trim($_username)) && !empty(trim($_password)) )
         {
-            $_usernameCount = selectCount('users', 'username', $_username);
-                if  ( $_usernameCount > 0 ) {
-                    $_dBusername = selectOneWhere('users', 'username', $_username, 'username');
-                    $_dBpassword = selectOneWhere('users', 'username', $_username, 'password');
+            $_username = mysqli_real_escape_string($conn, $_username);
+            $_password = mysqli_real_escape_string($conn, $_password);
 
-                        if ( ($_username == $_dBusername) && password_verify($_password, $_dBpassword) ) {
-                            setSesssion('user', $_username);
+            $_usernameCount = selectAuthCount('users', $_username);
+                if  ( $_usernameCount > 0 ) {
+                    $_dbAuth = selectAuth('users', $_username);
+
+                        if ( ( $_username == $_dbAuth['username'] OR $_username == $_dbAuth['email'] ) && password_verify($_password, $_dbAuth['password']) ) {
+                            setSession('user', $_username);
                             header('location: home.php');
                         } else {
                             header('location: index.php');
                         }
 
                 } else {
-                    // Mengembalikan error jika username tidak ada di DB
-                    return $error = 1;
+                    return false;
                 }
-        } else {
-            // Mengembalikan error jika username atau password kosong
-            return $error = 2;
         }
     }
 
+    // Membuat fungsi registrasi user
+    function Register($_username, $_email, $_password)
+    {
+        global $conn;
+
+            $_username = mysqli_real_escape_string($conn, $_username);
+            $_email = mysqli_real_escape_string($conn, $_email);
+            $_password = mysqli_real_escape_string($conn, $_password);
+
+            if  ( !empty(trim($_username)) && !empty(trim($_email)) && !empty(trim($_password)) ) {
+
+
+                $_SQL = "INSERT INTO users( username, email, password ) VALUES( '$_username', '$_email', '$_password' )";
+
+            } else {
+                // Mengembalikan Error Jika username, email dan password kosong
+                $error = 1;
+            }
+
+    }
 
 

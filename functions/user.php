@@ -1,5 +1,23 @@
 <?php
 
+    // Membuat fungsi untuk method $_POST[]
+    function post($data)
+    {
+        if ( !empty(trim($data)) && isset($_POST[$data]) ){
+            return $_POST[$data];
+        } else {
+            return false;
+        }
+    }
+
+    // Membuat fungsi Penginisialisasi Session
+    function setSession($sessionName, $sessionValue)
+    {
+        if ( !empty(trim($sessionName)) && !empty(trim($sessionValue)) ) {
+            return $_SESSION[$sessionName] = $sessionValue;
+        }
+    }
+
     function selectCount($table, $field, $value)
     {
         global $conn;

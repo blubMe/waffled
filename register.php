@@ -3,7 +3,7 @@
     require_once('core/init.php');
 
     // Mendapatkan Session user jika ada langsung kehalaman Beranda
-    if ( !getSession('user') ) {
+    if ( getSession('user') ) {
         header('location: home.php');
     }
 
@@ -11,13 +11,14 @@
     if ( post('register') )
     {
         if ( post('password') === post('repassword') ) {
-            Register(array(
-                'username' => post('username'),
-                'email' => post('email'),
-                'password' => password_hash(post('password'),PASSWORD_DEFAULT),
-            ));
+
+            $_register = Register( post('username'), // Username
+                                   post('email'), // Email
+                                   password_hash(post('password'),PASSWORD_DEFAULT) // Password
+                         );
+
             } else {
-            // Jika Password tidak sama dengan Repassword
+                  // Jika Password tidak sama dengan Repassword
 
             }
     }

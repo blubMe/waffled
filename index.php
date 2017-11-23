@@ -3,6 +3,8 @@
   // Memasukkan semua fungsi lewat file init.php
   require_once('core/init.php');
 
+  $error = null;
+
     // Mendapatkan Session user jika ada langsung kehalaman Beranda
     if ( getSession('user') ) {
         header('location: home.php');
@@ -10,8 +12,29 @@
 
     // Memanggil fungsi Auth sekaligus mendapatkan error jika ada
     if ( post('login') ) {
-      $_loginStatus = Auth(post('username'), post('password'));
+      if ( !empty(trim(post('username'))) && !empty(trim(post('password')))    ) {
+        setSession('fusername',post('username'));
+        setSession('fpassword',post('password'));
+        if ( !empty(trim(post('captcha'))) && trim(post('captcha')) == getSession('captcha') ) {
+          $_loginStatus = Auth(post('username'), post('password'));
+          ($_loginStatus == false) ? $error = 3 : '';
+        } else {
+          // Mengembalikan error jika captcha tidak sesuai dengan inputan
+          $error = 2;
+        }
+      } else {
+        // Mengembalikan error jika username atau password kosong
+        $error = 1;
+      }
     }
+
+    // Captcha
+    $aC = rand(1,7); // Random Angka A
+    $bC = rand(1,5);  // Random Angka B
+    $resultC = $aC + $bC; // Hasil = A + B
+    setSession('captcha', $resultC);  // Membuat Session Hasil dari angka A dan Angka B
+
+
 ?>
 
 <!DOCTYPE html>
@@ -53,23 +76,22 @@
           <h4>Logo_Here</h4>
         </div>
         <form class="form-login" method="post">
-          <input class="login-input" type="text" name="username" value="" placeholder="Email">
-            <input class="login-input" type="password" name="password" value="" placeholder="Password">
-            <input class="button regis-button" type="submit" name="login" value="Masuk">
+          <input class="login-input" type="text" name="username" value="<?= getSession('fusername'); ?>" placeholder="Email / Username">
+          <input class="login-input" type="password" name="password" value="<?= getSession('fpassword'); ?>" placeholder="Password">
+          <input class="login-input" type="number" name="captcha" placeholder="<?= $aC ." + ". $bC ?>">
+            <?= ($error === 1) ? 'Username / Email Wajib diisi' : ''; ?>
+            <?= ($error === 3) ? post('username').' Tidak Terdaftar' : ''; ?>
+            <?= ($error === 2) ? 'Captcha Salah' : ''; ?>
+          <input class="button regis-button" type="submit" name="login" value="Masuk">
         </form>
         <div class="wrap-otherauth">
           <div class="wrap-otherauth__title">
-            <span>Atau</span>
+            <div style="margin-top: 50px;"><span>Atau</span></div>
           </div>
           <div class="button login-button">
             Daftar
           </div>
-          <div class="button login-button google-button">
-            <span>
-              <svg height="25" viewBox="0 0 512 512" width="25" xmlns="http://www.w3.org/2000/svg" data-reactid="41"><g fill="none" fill-rule="evenodd" data-reactid="42"><path d="M482.56 261.36c0-16.73-1.5-32.83-4.29-48.27H256v91.29h127.01c-5.47 29.5-22.1 54.49-47.09 71.23v59.21h76.27c44.63-41.09 70.37-101.59 70.37-173.46z" fill="#4285f4" data-reactid="43"></path><path d="M256 492c63.72 0 117.14-21.13 156.19-57.18l-76.27-59.21c-21.13 14.16-48.17 22.53-79.92 22.53-61.47 0-113.49-41.51-132.05-97.3H45.1v61.15c38.83 77.13 118.64 130.01 210.9 130.01z" fill="#34a853" data-reactid="44"></path><path d="M123.95 300.84c-4.72-14.16-7.4-29.29-7.4-44.84s2.68-30.68 7.4-44.84V150.01H45.1C29.12 181.87 20 217.92 20 256c0 38.08 9.12 74.13 25.1 105.99l78.85-61.15z" fill="#fbbc05" data-reactid="45"></path><path d="M256 113.86c34.65 0 65.76 11.91 90.22 35.29l67.69-67.69C373.03 43.39 319.61 20 256 20c-92.25 0-172.07 52.89-210.9 130.01l78.85 61.15c18.56-55.78 70.59-97.3 132.05-97.3z" fill="#ea4335" data-reactid="46"></path><path d="M20 20h472v472H20V20z" data-reactid="47"></path></g></svg>
-            </span>
-            login dengan Google
-          </div>
+
         </div>
       </div>
     </div>
