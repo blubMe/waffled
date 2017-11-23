@@ -318,6 +318,26 @@ section {
   font-size: 12px;
   color: #929292; }
 
+.homeWrapper--profile {
+  width: 100%;
+  padding: 60px 100px; }
+
+.bgCoverProfile {
+  width: inherit;
+  height: 300px;
+  overflow: hidden;
+  position: relative; }
+  .bgCoverProfile img {
+    width: 100%;
+    height: auto; }
+
+.filterDown {
+  position: absolute;
+  bottom: 0;
+  background-image: linear-gradient(to bottom, transparent 0%, transparent 59%, rgba(0, 0, 0, 0.65) 100%);
+  width: 100%;
+  height: 200px; }
+
 footer {
   width: 100%;
   height: 6.5vh;
@@ -335,6 +355,9 @@ footer {
     font-size: 12px;
     font-weight: 600;
     font-family: 'Open Sans'; }
+
+button {
+  outline: none; }
 
 .button {
   border: none;
@@ -371,7 +394,7 @@ footer {
     background-color: white;
     padding: 2.5px 3px; }
 
-.button-blue {
+.button-blue, .button-blue--small {
   padding: 10px 50px;
   background: #0084FF;
   color: white;
@@ -379,9 +402,13 @@ footer {
   text-align: center;
   font-weight: bold;
   transition: .3s ease; }
-  .button-blue:focus {
+  .button-blue:focus, .button-blue--small:focus {
     background: #016dcc;
     transition: .3s ease; }
+
+.button-blue--small {
+  border: none;
+  padding: 7px 15px !important; }
 
 .search-login {
   background-color: rgba(238, 238, 238, 0.4);
@@ -441,5 +468,50 @@ input {
   color: #e4e4e4;
   font-family: 'Open Sans';
   font-weight: 600; }
+
+.overlay {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(104, 104, 104, 0.301);
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.replayWrapper {
+  width: 400px;
+  padding: 5px 0 0 0;
+  border-radius: 3px;
+  background: white;
+  overflow: hidden;
+  border-radius: 3px; }
+  .replayWrapper .replayWrapper__header {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between; }
+  .replayWrapper .replyInputWrapper {
+    width: 100%;
+    height: 100px;
+    background: #F0F0F1; }
+    .replayWrapper .replyInputWrapper .replayInputWrapper__core {
+      padding: 20px 30px;
+      outline: none;
+      color: #444; }
+  .replayWrapper .replayWrapper__footer {
+    padding: 10px 20px 15px 0;
+    display: flex;
+    justify-content: flex-end;
+    background: #F0F0F1; }
+
+[contenteditable=true]:empty:before {
+  content: attr(placeholder);
+  display: block;
+  /* For Firefox */ }
+
+#replyPostClose {
+  cursor: pointer; }
 
 /*# sourceMappingURL=style.css.map */
