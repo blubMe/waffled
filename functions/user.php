@@ -54,8 +54,6 @@
 
     function updateProfile( $email, $fullname, $bio, $website, $instagram, $id){
         global $conn;
-            var_dump($email);
-            die();
             $fullname = mysqli_real_escape_string($conn, htmlentities($fullname));
             $email = mysqli_real_escape_string($conn, htmlentities($email));
             $website = mysqli_real_escape_string($conn, htmlentities($website));

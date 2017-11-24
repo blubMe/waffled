@@ -7,10 +7,14 @@ if ( !getSession('user') ) {
 
     $id_user = selectAuth ('users', $_SESSION['user'])['id'];
 
-
+        if (post('updateProfile')) {
+            if ( !empty(trim(post('email'))) AND !empty(trim(post('fullname'))) ){
+                updateProfile(post('email'), post('fullname'), post('bio'), post('website'), post('instagram'), $id_user );
+                // header('location: edit-profile.php');
+            }
+        }
 
     require_once('templates/partial/head.php'); // Memasukkan File Partial Bagian Header
-
 
 ?>
 <form method="post">
@@ -116,9 +120,7 @@ if ( !getSession('user') ) {
             <div class="barProfileSettingWrapper">
                 <div class="recomendWrapper" style="padding-top: 0;">
                     <div class="recomendWrapper__create">
-                           <button name="updateProfile" class="button-blue">
-                                    Update profile saya
-                           </button>
+                           <input type="submit" name="updateProfile" class="button-blue" value="Update profile saya">
                             <a href="profile.php" class="button-red">
                                     Batalkan
                             </a>
@@ -127,16 +129,7 @@ if ( !getSession('user') ) {
         </div>
     </div>
     </form>
-    <?php
-                                if (post('update')) {
-        // if ( !empty(trim(post('email'))) AND !empty(trim(post('fullname'))) ){
-        //     updateProfile(post('email'), post('fullname'), post('bio'), post('website'), post('instagram'), $id_user );
-        //     // header('location: edit-profile.php');
-        // }
 
-           echo "hajoi";
-        }
-                        ?>
 </body>
 <script>
     $(document).ready(function () {
