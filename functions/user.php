@@ -1,5 +1,31 @@
 <?php
 
+    function uploadImage($image, $name)
+    {
+        // $extension = basename($image['name']);
+        // $from = $image['tmp_name'];
+        $uploadTo = "assets/avatar/";
+
+        // if ($image['size'] > 0 AND $image['size'] < 500000 ) {
+            // if ( pathinfo($image) == jpg | pathinfo($image) == jpeg | pathinfo($image) == png){
+             return move_uploaded_file($image["tmp_name"], $uploadTo);
+            // }
+        // }
+    }
+
+    function comment($id_user, $comment, $postid)
+    {
+        global $conn;
+        $_SQL = "INSERT INTO comments(id_user, comment, id_post) VALUES($id_user, '$comment', $postid)";
+        return mysqli_query($conn,$_SQL);
+    }
+
+    function deletePost($idpost){
+        global $conn;
+        $_SQL = "DELETE FROM posts WHERE id= $idpost";
+        return mysqli_query($conn, $_SQL);
+    }
+
     function postUpdate($id, $post)
     {
         global $conn;

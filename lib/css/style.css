@@ -234,12 +234,8 @@ section {
         outline: none;
         transition: .3s ease; }
         .articleFeed .articleFeed__header .postReply .button--ghost:hover, .articleFeed .articleFeed__header .postReply .red-ghost:hover, .articleFeed .articleFeed__header .postReply .button--ghost:focus, .articleFeed .articleFeed__header .postReply .red-ghost:focus {
-          background: #0084FF;
           color: white;
           transition: .3s ease; }
-        .articleFeed .articleFeed__header .postReply .button--ghost:focus, .articleFeed .articleFeed__header .postReply .red-ghost:focus {
-          background: #016dcc !important;
-          border-color: #016dcc !important; }
 
 .articleFeed__content {
   position: relative; }
@@ -515,7 +511,8 @@ section {
   border: solid 1px #dbdbdb;
   outline: none;
   color: #999;
-  border-radius: 3px; }
+  border-radius: 3px;
+  width: 100%; }
   .replyInputWrapper__core:focus {
     background: white; }
 
@@ -567,6 +564,9 @@ button {
 
 .red-ghost:hover {
   background: #F44646 !important;
+  color: white !important; }
+.red-ghost:focus {
+  background: #cc3c3c !important;
   color: white !important; }
 
 .google-button {

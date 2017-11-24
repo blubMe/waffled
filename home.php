@@ -10,11 +10,17 @@
         $id_user = selectAuth ('users', $_SESSION['user'])['id'];
     } else {
         $_session = 0;
-        $id_user = 0;
+        $id_user = null;
     }
 
+    if (post('deletepost')) {
+        deletePost(post('idpost'));
+        header('location: home.php');
+    }
 
-
+    if (post('commented')){
+        comment($id_user, post('comment'), post('idpostcomment'));
+    }
 
     if (post('posted')) {
         if ( !empty( trim( post('post') ) ) ){
@@ -26,24 +32,6 @@
 
 ?>
 <body>
-    <!-- // replypopup // -->
-    <!-- <div id="replyPopup" class="overlay">
-        <div class="replayWrapper">
-            <div class="replayWrapper__header">
-                <h4>Reply post</h4>
-                <span id="replyPostClose">X</span>
-            </div>
-            <div class="replayWrapper__content">
-                <div class="replyInputWrapper">
-                    <div id="replyInput" class="replayInputWrapper__core" contenteditable="true" placeholder="reply here..."></div>
-                </div>
-            </div>
-            <div class="replayWrapper__footer">
-                <input type="submit" value="Reply now" class="button-blue--small">
-            </div>
-        </div>
-    </div> -->
-    <!-- create post feed -->
     <div id="createPostPopup" class="overlay">
         <div class="createPostWrapper">
             <div class="createPostWrapper__header">
@@ -191,10 +179,10 @@
                                             <a href=""><?= $status['fullname'] ?></a>
                                         </div>
                                         <div class="postReply">
-                                            <?php if($_session == 1 AND $status['id_user_post'] = $id_user): ?>
+                                            <?php if($_session == 1 AND $status['id_user_post'] == $id_user): ?>
                                             <form method="post">
                                                 <input name="postid" type="hidden" value="<?=$status['idpost']; ?>">
-                                                <input type="submit" name="deletepost" value="Delete Post" style="color: #F44646; border-color: #F44646;" class="button--ghost">
+                                                <input type="submit" name="deletepost" value="Delete Post" style="color: #F44646; border-color: #F44646;" class="button--ghost red-ghost">
                                             </form>
                                                 <?php endif ?>
                                         </div>
@@ -206,15 +194,23 @@
                                         </div>
                                         <div class="postCommentShow">
                                             <!--  -->
+                                            <?php
+                                            $sqlcomment= "SELECT users.name AS namauser, comments.comment AS komentar
+                                             FROM users, comments
+                                             WHERE comments.id_post = $status[idpost] AND comments.id_user = users.id";
+                                            $parafans = mysqli_query($conn, $sqlcomment);
+                                            while($lambeturah = mysqli_fetch_array($parafans)): ?>
                                             <div class="postCommentShow__people">
                                                 <div class="CommentAvatar">
                                                     <img src="assets/images/bg.png" alt="">
                                                 </div>
                                                 <span>
-                                                    <b>Choirul Mh</b>
+                                                    <b><?= $lambeturah['namauser'] ?></b>
                                                 </span>
-                                                <span>heheheh...</span>
+                                                <span><?= $lambeturah['komentar'] ?></span>
                                             </div>
+                                            <?php endwhile ?>
+                                            <!--  -->
                                             <div class="postCommentShow__people">
                                                 <div class="CommentAvatar">
                                                     <img src="assets/images/toga.jpeg" alt="">
@@ -235,8 +231,10 @@
                                             </div>
                                         </div>
                                         <div class="replyInputWrapper">
-                                            <form action="" name="replyComment">
-                                            <div class="replyInputWrapper__core" contenteditable="true" placeholder="reply here..."></div>
+                                            <form action="" method="post" name="replyComment">
+                                                <input type="hidden" name="idpostcomment" value="<?=$status['idpost']; ?>">
+                                                <input type="text" name="comment" class="replyInputWrapper__core" contenteditable="true" placeholder="reply here...">
+                                                <input type="submit" name="commented" style="display:none;">
                                             </form>
                                         </div>
                                     </div>
@@ -254,7 +252,6 @@
                                     </div>
                                     <div class="postReply">
                                         <button style="color: #F44646; border-color: #F44646;" class="button--ghost red-ghost">Delete post</button>
-
                                     </div>
                                 </div>
                                 <div class="articleFeed__content">
@@ -308,12 +305,67 @@
                                     </div>
                                     <div class="replyInputWrapper">
                                         <form action="" name="replyComment">
-                                        <div class="replyInputWrapper__core" contenteditable="true" placeholder="reply here..."></div>
+                                        <input type="text" class="replyInputWrapper__core" contenteditable="true" placeholder="reply here...">
                                         </form>
                                     </div>
                                 </div>
                             </div>
+                            <div class="articleFeed">
+                                    <div class="articleFeed__header">
+                                        <div class="postFeed">
+                                            <div class="postAvatar">
+                                                <img src="assets/images/toga.jpeg" class="" alt="">
+                                            </div>
+                                            <a href="">Fahmi irsyad khairi</a>
+                                        </div>
+                                        <div class="postReply">
+                                                <button style="color: #F44646; border-color: #F44646;" class="button--ghost red-ghost">Delete post</button>
 
+                                        </div>
+                                    </div>
+                                    <div class="articleFeed__footer">
+                                        <div class="postDesc">
+                                            <span>
+                                                <span class="postDescOwner">Fahmi irsyad khairi - </span> dolor sit amet consectetur adipisicing elit. Nihil,
+                                                quisquam? Atque suscipit, dolor cumque necessitatibus qui, ex facilis modi deserunt
+                                                obcaecati error.</span>
+                                        </div>
+                                        <div class="postCommentShow">
+                                            <div class="postCommentShow__people">
+                                                <div class="CommentAvatar">
+                                                    <img src="assets/images/bg.png" alt="">
+                                                </div>
+                                                <span>
+                                                    <b>Choirul Mh</b>
+                                                </span>
+                                                <span>heheheh...</span>
+                                            </div>
+                                            <div class="postCommentShow__people">
+                                                <div class="CommentAvatar">
+                                                    <img src="assets/images/toga.jpeg" alt="">
+                                                </div>
+                                                <span>
+                                                    <b>Fahmi irsyad Khairi</b>
+                                                </span>
+                                                <span>paan kentod</span>
+                                            </div>
+                                            <div class="postCommentShow__people">
+                                                <div class="CommentAvatar">
+                                                    <img src="assets/images/bg4.jpg" alt="">
+                                                </div>
+                                                <span>
+                                                    <b>Kyoto A</b>
+                                                </span>
+                                                <span>cyka b</span>
+                                            </div>
+                                        </div>
+                                        <div class="replyInputWrapper">
+                                            <form action="" name="replyComment">
+                                                <input type="text" class="replyInputWrapper__core" contenteditable="true" placeholder="reply here...">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             <div class="articleFeed">
                                 <div class="articleFeed__header">
                                     <div class="postFeed">
@@ -323,7 +375,7 @@
                                         <a href="">Fahmi irsyad khairi</a>
                                     </div>
                                     <div class="postReply">
-                                            <button style="color: #F44646; border-color: #F44646;" class="button--ghost">Delete post</button>
+                                            <button style="color: #F44646; border-color: #F44646;" class="button--ghost red-ghost">Delete post</button>
                                     </div>
                                 </div>
                                 <div class="articleFeed__content">
@@ -377,7 +429,7 @@
                                     </div>
                                     <div class="replyInputWrapper">
                                             <form action="" name="replyComment">
-                                                    <div class="replyInputWrapper__core" contenteditable="true" placeholder="reply here..."></div>
+                                                    <input type="text" class="replyInputWrapper__core" contenteditable="true" placeholder="reply here...">
                                             </form>
                                     </div>
                                 </div>
