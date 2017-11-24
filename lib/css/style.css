@@ -288,10 +288,10 @@ section {
         font-size: 13px;
         margin-right: 5px; }
 
-.recomendWrapper {
+.recomendWrapper, .barProfileSettingWrapper {
   position: fixed;
   padding-top: 20px; }
-  .recomendWrapper .recomendWrapper__create {
+  .recomendWrapper .recomendWrapper__create, .barProfileSettingWrapper .recomendWrapper__create {
     width: 100%; }
 
 .recomendWrapper__friends {
@@ -420,6 +420,84 @@ section {
   font-size: 14px;
   width: 385px; }
 
+.profileSettingWrapper {
+  padding-left: 80px;
+  padding-right: 60px; }
+  .profileSettingWrapper .profileSettingWrapper__content {
+    border-radius: 3px;
+    border: 1px solid #e6e6e6;
+    background: white; }
+
+.profileSettingHeader__images {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  position: relative;
+  background-color: #eee;
+  background-image: url("assets/images/bg4.jpg"); }
+
+.profileSettingHeaderImages__header-upload {
+  width: 100%;
+  height: 50px;
+  top: 0;
+  position: absolute;
+  display: flex;
+  padding: 0 20px;
+  justify-content: space-between;
+  align-items: center; }
+  .profileSettingHeaderImages__header-upload h4 {
+    color: white; }
+
+.coverEditButtonWrapper {
+  display: flex; }
+  .coverEditButtonWrapper input {
+    width: 80px; }
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1; }
+
+.inputfile-1 + label {
+  color: #f1e5e6;
+  background-color: #0084FF; }
+
+.inputfile + label + svg {
+  fill: white; }
+
+.inputfile + label {
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  padding: 5px 10px; }
+
+.changeImagebutton {
+  position: absolute; }
+
+.profileSettting__content {
+  padding: 20px;
+  border-top: 1px solid #e6e6e6; }
+
+.settingGroup {
+  display: table;
+  margin-bottom: 30px; }
+  .settingGroup .settingGroup__label {
+    font-weight: bold;
+    display: table-cell;
+    padding: 0 10px;
+    vertical-align: top;
+    width: 145px; }
+    .settingGroup .settingGroup__label h4 {
+      color: #444444; }
+  .settingGroup .settingGroup__input {
+    padding: 0 20px; }
+
 footer {
   width: 100%;
   height: 6.5vh;
@@ -439,7 +517,8 @@ footer {
     font-family: 'Open Sans'; }
 
 button {
-  outline: none; }
+  outline: none;
+  cursor: pointer; }
 
 .button {
   border: none;
@@ -476,17 +555,26 @@ button {
     background-color: white;
     padding: 2.5px 3px; }
 
-.button-blue, .button-blue--small {
+.button-blue, .button-red, .button-blue--small {
   padding: 10px 50px;
   background: #0084FF;
   color: white;
   border-radius: 5px;
   text-align: center;
   font-weight: bold;
-  transition: .3s ease; }
-  .button-blue:focus, .button-blue--small:focus {
+  margin-bottom: 10px;
+  transition: .3s ease;
+  border: none;
+  display: block; }
+  .button-blue:focus, .button-red:focus, .button-blue--small:focus {
     background: #016dcc;
     transition: .3s ease; }
+
+.button-red {
+  background: #F44646;
+  width: 100%; }
+  .button-red:focus {
+    background: #cc3c3c; }
 
 .button-blue--small {
   border: none;
@@ -500,6 +588,19 @@ button {
   color: #7b7b7b;
   text-align: center;
   font-weight: bold; }
+
+.changeImageCoverbutton {
+  background: #FFF;
+  border: none;
+  color: #444;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-weight: bold;
+  min-width: 69px; }
+
+.input--home-small {
+  padding: 5px 15px;
+  color: #444444 !important; }
 
 .search-login {
   background-color: rgba(238, 238, 238, 0.4);
@@ -527,7 +628,7 @@ button {
 input {
   display: block; }
 
-.input--home {
+.input--home, .input--home-small {
   background: #fafafa;
   border: solid 1px #dbdbdb;
   -webkit-box-pack: center;
@@ -541,7 +642,7 @@ input {
   cursor: text;
   width: 200px;
   padding: 7px 9px; }
-  .input--home:focus {
+  .input--home:focus, .input--home-small:focus {
     background: white; }
 
 .bigheading, .heading, .subheading {
