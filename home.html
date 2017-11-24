@@ -12,7 +12,7 @@
 
 <body>
     <!-- // replypopup // -->
-    <div id="replyPopup" class="overlay">
+    <!-- <div id="replyPopup" class="overlay">
         <div class="replayWrapper">
             <div class="replayWrapper__header">
                 <h4>Reply post</h4>
@@ -27,7 +27,7 @@
                 <button class="button-blue--small">Reply now</button>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- create post feed -->
     <div id="createPostPopup" class="overlay">
         <div class="createPostWrapper">
@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="createPostWrapper__footer">
-                <button class="button-blue--small">Reply now</button>
+                <button class="button-blue--small">Post now</button>
             </div>
         </div>
     </div>
@@ -160,7 +160,7 @@
                                     </div>
                                     <div class="postReply">
                                         <button style="color: #F44646; border-color: #F44646;" class="button--ghost red-ghost">Delete post</button>
-                                        <button id="replyAdd" class="button--ghost">Reply post</button>
+                                        
                                     </div>
                                 </div>
                                 <div class="articleFeed__content">
@@ -212,6 +212,11 @@
                                             <span>cyka b</span>
                                         </div>
                                     </div>
+                                    <div class="replyInputWrapper">
+                                        <form action="" name="replyComment">
+                                        <div class="replyInputWrapper__core" contenteditable="true" placeholder="reply here..."></div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                             <div class="articleFeed">
@@ -224,7 +229,7 @@
                                         </div>
                                         <div class="postReply">
                                                 <button style="color: #F44646; border-color: #F44646;" class="button--ghost">Delete post</button>
-                                                <button class="button--ghost">Reply post</button>
+
                                         </div>
                                     </div>
                                     <div class="articleFeed__footer">
@@ -263,6 +268,11 @@
                                                 <span>cyka b</span>
                                             </div>
                                         </div>
+                                        <div class="replyInputWrapper">
+                                            <form action="" name="replyComment">
+                                            <div class="replyInputWrapper__core" contenteditable="true" placeholder="reply here..."></div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             <div class="articleFeed">
@@ -275,8 +285,7 @@
                                     </div>
                                     <div class="postReply">
                                             <button style="color: #F44646; border-color: #F44646;" class="button--ghost">Delete post</button>
-                                            <button class="button--ghost">Reply post</button>
-                                        </div>
+                                    </div>
                                 </div>
                                 <div class="articleFeed__content">
                                     <div class="filterDown"></div>
@@ -327,6 +336,11 @@
                                             <span>cyka b</span>
                                         </div>
                                     </div>
+                                    <div class="replyInputWrapper">
+                                            <form action="" name="replyComment">
+                                                    <div class="replyInputWrapper__core" contenteditable="true" placeholder="reply here..."></div>
+                                            </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -374,6 +388,49 @@
                             </div>
                         </div>
                     </div>
+                    <div class="recomendWrapper__friends">
+                            <div class="recomendFriends__header">
+                                <h4>Might friends you know</h4>
+                            </div>
+                            <div class="recommendFriends__content">
+                                <div class="friendStickProfile">
+                                    <div class="friendStickProfile__avatar">
+                                        <img src="assets/images/bg.png" alt="">
+                                    </div>
+                                    <div class="friendStickProfile__title">
+                                        <h5>Choirul Mh</h5>
+                                        <span>@zbedjo</span>
+                                    </div>
+                                </div>
+                                <div class="friendStickProfile">
+                                        <div class="friendStickProfile__avatar">
+                                            <img src="assets/images/bg.png" alt="">
+                                        </div>
+                                        <div class="friendStickProfile__title">
+                                            <h5>Sakura mawada Warohma</h5>
+                                            <span>@zbedjo</span>
+                                        </div>
+                                    </div>
+                                <div class="friendStickProfile">
+                                    <div class="friendStickProfile__avatar">
+                                        <img src="assets/images/toga.jpeg" alt="">
+                                    </div>
+                                    <div class="friendStickProfile__title">
+                                        <h5>Fahmi irsyad khairi</h5>
+                                        <span>@pampam</span>
+                                    </div>
+                                </div>
+                                <div class="friendStickProfile">
+                                    <div class="friendStickProfile__avatar">
+                                        <img src="assets/images/love.jpg" alt="">
+                                    </div>
+                                    <div class="friendStickProfile__title">
+                                        <h5>Cyntia</h5>
+                                        <span>@cpy</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -382,15 +439,15 @@
 </body>
 <script>
     $(document).ready(function () {
-        $('#replyPopup').hide();
-        $('#replyAdd').click(function () {
-            $('#replyPopup').toggle();
-            return false;
-        });
-        $('#replyPostClose').click(function () {
-            $('#replyPopup').hide();
-            return false;
-        });
+        // $('#replyPopup').hide();
+        // $('#replyAdd').click(function () {
+        //     $('#replyPopup').toggle();
+        //     return false;
+        // });
+        // $('#replyPostClose').click(function () {
+        //     $('#replyPopup').hide();
+        //     return false;
+        // });
         $('#createPostPopup').hide();
         $('#postingAdd').click(function () {
             $('#createPostPopup').toggle();

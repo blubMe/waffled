@@ -299,7 +299,7 @@ section {
     width: 100%; }
 
 .recomendWrapper__friends {
-  margin-top: 30px; }
+  margin-top: 20px; }
   .recomendWrapper__friends h4 {
     color: #929292;
     margin-bottom: 15px; }
@@ -321,6 +321,10 @@ section {
 .friendStickProfile__title span {
   font-size: 12px;
   color: #929292; }
+
+.recommendFriends__content {
+  max-height: 200px;
+  overflow: auto; }
 
 .homeWrapper--profile {
   width: 100%;
@@ -501,6 +505,19 @@ section {
       color: #444444; }
   .settingGroup .settingGroup__input {
     padding: 0 20px; }
+
+.replyInputWrapper {
+  margin-top: 20px; }
+
+.replyInputWrapper__core {
+  padding: 10px 15px;
+  background: #fafafa;
+  border: solid 1px #dbdbdb;
+  outline: none;
+  color: #999;
+  border-radius: 3px; }
+  .replyInputWrapper__core:focus {
+    background: white; }
 
 footer {
   width: 100%;
