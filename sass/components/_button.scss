@@ -53,15 +53,6 @@ button {
     background-color: white;
     padding: 2.5px 3px;
   }
-  // &::before {
-  //   width: 30px;
-  //   height: 30px;
-  //   background-color: white;
-  //   bottom: 7px;
-  //   left: 10px;
-  //   position: absolute;
-  //   content:'';
-  // }
 }
 
 
@@ -128,4 +119,16 @@ button {
   @extend .input--home;
   padding: 5px 15px;
   color: #444444!important;
+}
+
+.button--friendConnect{
+  @extend .button-blue;
+  background: #50E373;
+  padding: 5px 10px;
+  position: absolute;
+  margin-top: -15px;
+  right: 10px;
+  &:focus{
+    background: rgb(60, 168, 85);
+  }
 }

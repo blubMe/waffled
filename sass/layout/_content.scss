@@ -271,8 +271,18 @@ section {
 .recomendWrapper {
   position: fixed;
   padding-top: 20px;
+  width: 300px;
   .recomendWrapper__create {
     width: 100%;
+  }
+}
+
+.friendStickProfile__title {
+  h5 {
+    max-width: 130px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;;
   }
 }
 
@@ -287,6 +297,7 @@ section {
   margin: 15px 0;
   display: flex;
   align-items: center;
+  position: relative;
 .friendStickProfile__avatar {
   width: 50px;
   height: 50px;
@@ -309,6 +320,11 @@ section {
 .recommendFriends__content {
   max-height: 200px;
   overflow: auto;
+}
+
+.friendConnect {
+  margin-left: 10px;
+  margin-top: -10px;
 }
 
 // profile 

@@ -290,9 +290,16 @@ section {
 
 .recomendWrapper, .barProfileSettingWrapper {
   position: fixed;
-  padding-top: 20px; }
+  padding-top: 20px;
+  width: 300px; }
   .recomendWrapper .recomendWrapper__create, .barProfileSettingWrapper .recomendWrapper__create {
     width: 100%; }
+
+.friendStickProfile__title h5 {
+  max-width: 130px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 .recomendWrapper__friends {
   margin-top: 20px; }
@@ -303,7 +310,8 @@ section {
 .friendStickProfile {
   margin: 15px 0;
   display: flex;
-  align-items: center; }
+  align-items: center;
+  position: relative; }
   .friendStickProfile .friendStickProfile__avatar {
     width: 50px;
     height: 50px;
@@ -321,6 +329,10 @@ section {
 .recommendFriends__content {
   max-height: 200px;
   overflow: auto; }
+
+.friendConnect {
+  margin-left: 10px;
+  margin-top: -10px; }
 
 .homeWrapper--profile {
   width: 100%;
@@ -580,7 +592,7 @@ button {
     background-color: white;
     padding: 2.5px 3px; }
 
-.button-blue, .button-red, .button-blue--small, .button-red--smalling {
+.button-blue, .button-red, .button-blue--small, .button-red--smalling, .button--friendConnect {
   padding: 10px 50px;
   background: #0084FF;
   color: white;
@@ -591,7 +603,7 @@ button {
   transition: .3s ease;
   border: none;
   display: block; }
-  .button-blue:focus, .button-red:focus, .button-blue--small:focus, .button-red--smalling:focus {
+  .button-blue:focus, .button-red:focus, .button-blue--small:focus, .button-red--smalling:focus, .button--friendConnect:focus {
     background: #016dcc;
     transition: .3s ease; }
 
@@ -629,6 +641,15 @@ button {
 .input--home-small {
   padding: 5px 15px;
   color: #444444 !important; }
+
+.button--friendConnect {
+  background: #50E373;
+  padding: 5px 10px;
+  position: absolute;
+  margin-top: -15px;
+  right: 10px; }
+  .button--friendConnect:focus {
+    background: #3ca855; }
 
 .search-login {
   background-color: rgba(238, 238, 238, 0.4);
