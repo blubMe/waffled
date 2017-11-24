@@ -18,10 +18,8 @@
     if (post('posted')) {
         if ( !empty( trim( post('post') ) ) ){
             postUpdate($id_user, post('post'));
-        // die();
-
         }
-        // die();
+
     }
 ?>
 <body>
@@ -139,6 +137,11 @@
                                 </svg>
                             </div>
                         </a>
+                        <a href="logout.php">
+                            <div style="margin:5px 0">
+                            <svg xmlns="http://www.w3.org/2000/svg"isolation="isolate" width="40px" height="40" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><path fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" d="M71.31,71.294  c-11.761,11.761-30.828,11.761-42.589,0s-11.761-30.828,0-42.589s30.828-11.761,42.589,0"/><line fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="90" y1="50" x2="50.015" y2="50"/><polyline fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" points="81.957,60.647   92.604,50 81.957,39.353 "/><line fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="92.604" y1="50" x2="92.604" y2="50"/><circle fill="#000000" stroke="#000000" stroke-width="5" stroke-miterlimit="10" cx="50.015" cy="50" r="12.485"/></svg>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -229,13 +232,20 @@
                                     </div>
                                 </div>
                             </div>
+                            <!--  -->
+            <?php $_SQL = "SELECT users.name AS fullname, users.username AS username, posts.post AS posted
+                           FROM users, posts  WHERE posts.id_user = users.id
+                           ORDER BY posts.id DESC";
+            $aa = mysqli_query($conn, $_SQL);
+            while($status = mysqli_fetch_array($aa)):
+            ?>
                             <div class="articleFeed">
                                     <div class="articleFeed__header">
                                         <div class="postFeed">
                                             <div class="postAvatar">
                                                 <img src="assets/images/toga.jpeg" class="" alt="">
                                             </div>
-                                            <a href="">Fahmi irsyad khairi</a>
+                                            <a href=""><?= $status['fullname'] ?></a>
                                         </div>
                                         <div class="postReply">
                                             <button id="replyAdd" class="button--ghost">Reply post</button>
@@ -244,11 +254,10 @@
                                     <div class="articleFeed__footer">
                                         <div class="postDesc">
                                             <span>
-                                                <span class="postDescOwner">Fahmi irsyad khairi - </span> dolor sit amet consectetur adipisicing elit. Nihil,
-                                                quisquam? Atque suscipit, dolor cumque necessitatibus qui, ex facilis modi deserunt
-                                                obcaecati error.</span>
+                                                <span class="postDescOwner"><?= $status['fullname'] ?> - </span> <?= $status['posted'] ?></span>
                                         </div>
                                         <div class="postCommentShow">
+                                            <!--  -->
                                             <div class="postCommentShow__people">
                                                 <div class="CommentAvatar">
                                                     <img src="assets/images/bg.png" alt="">
@@ -279,6 +288,9 @@
                                         </div>
                                     </div>
                                 </div>
+                <?php endwhile ?>
+
+                                <!--  -->
                             <div class="articleFeed">
                                 <div class="articleFeed__header">
                                     <div class="postFeed">

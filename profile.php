@@ -28,7 +28,14 @@
                 <h2><?= ucwords(selectOneWhere('users', 'id', $id_user, 'name')); ?></h2>
                 <span class="usernameProfile"><?= "@".selectOneWhere('users', 'id', $id_user, 'username'); ?></span>
                 <div class="bioProfile">
+                 <?php  if(exist('users', 'bio', $id_user)): ?>
                     <p><q><?= selectOneWhere('users', 'id', $id_user, 'bio'); ?></q></p>
+                <?php endif ?>
+                </div>
+                <div class="bioProfile">
+                 <?php  if(exist('users', 'hobby', $id_user)): ?>
+                    <p>My hobbies is <i><?= selectOneWhere('users', 'id', $id_user, 'hobby'); ?></i></p>
+                <?php endif ?>
                 </div>
                 <div class="socialProfile">
                 <?php  if(exist('users', 'website', $id_user)): ?>
@@ -49,19 +56,26 @@
                     <h1>Posts</h1>
                 </div>
                 <div class="postProfileFeed__content">
+                    <?php $_SQL = "SELECT users.avatar AS avatar, posts.post AS posted
+                           FROM users, posts  WHERE users.id = $id_user
+                           ORDER BY posts.id DESC";
+            $aa = mysqli_query($conn, $_SQL);
+            while($status = mysqli_fetch_array($aa)):
+            ?>
                     <div class="postProfileFeed--items">
                         <div class="postProfileFeedItems--avatar">
                             <img src="assets/images/toga.jpeg" alt="">
                         </div>
                         <div class="postProfileFeedItems--content">
-                            <div class="postProfileFeedItems--images">
+                            <!-- <div class="postProfileFeedItems--images">
                                 <img src="assets/images/food.jpg" alt="">
-                            </div>
+                            </div> -->
                             <div class="postProfileFeedItems--desc">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Im a producer also can cook something specials</p>
+                                <p><?= $status['posted'];  ?></p>
                             </div>
                         </div>
                     </div>
+            <?php endwhile ?>
                     <div class="postProfileFeed--items">
                             <div class="postProfileFeedItems--avatar">
                                 <img src="assets/images/toga.jpeg" alt="">

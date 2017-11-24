@@ -9,10 +9,16 @@ if ( !getSession('user') ) {
 
         if (post('updateProfile')) {
             if ( !empty(trim(post('email'))) AND !empty(trim(post('fullname'))) ){
-                updateProfile(post('email'), post('fullname'), post('bio'), post('website'), post('instagram'), $id_user );
-                // header('location: edit-profile.php');
+                updateProfile(post('email'), post('fullname'), post('hobi'), post('bio'), post('website'), post('instagram'), $id_user );
             }
         }
+
+    if (post('updatepassword')){
+        if (trim(post('newpassword')) == trim(post('repeatpassword'))) {
+            // die();
+            updatePassword($id_user, post('repeatpassword'), post('oldpassword'));
+        }
+    }
 
     require_once('templates/partial/head.php'); // Memasukkan File Partial Bagian Header
 
@@ -40,6 +46,9 @@ if ( !getSession('user') ) {
                         </div>
                     </div>
                     <div class="profileSettting__content">
+                         <div style="padding-left:7px; margin-bottom: 30px; padding-bottom: 10px; color:#7b7b7b;width: 100%; border-bottom: 1px solid #cecece;">
+                                    <h5>General config</h5>
+                            </div>
                         <div class="settingGroup">
                                 <div class="settingGroup__label">
                                     <h4>Username</h4>
@@ -72,6 +81,14 @@ if ( !getSession('user') ) {
                                     <input class="input--home-small" name="bio" type="text" value="<?= selectOneWhere('users', 'id', $id_user, 'bio'); ?>" placeholder="professional producer , also can design UI/UX.">
                                 </div>
                         </div>
+                         <div class="settingGroup">
+                                <div class="settingGroup__label">
+                                    <h4>Hobi</h4>
+                                </div>
+                                <div class="settingGroup__input">
+                                    <input class="input--home-small" name="hobi" type="text" value="<?= selectOneWhere('users', 'id', $id_user, 'hobby'); ?>" placeholder="swimming , ride bicycle and run.">
+                                </div>
+                        </div>
                         <div class="settingGroup">
                                 <div class="settingGroup__label">
                                     <h4>Website</h4>
@@ -88,12 +105,18 @@ if ( !getSession('user') ) {
                                     <input class="input--home-small" name="instagram" value="<?= selectOneWhere('users', 'id', $id_user, 'instagram'); ?>"  type="text" placeholder="@fahmiirsyadk">
                                 </div>
                         </div>
+    </form>
+
+                          <div style="padding-left:7px; margin-bottom: 30px; padding-bottom: 10px; color:#7b7b7b;width: 100%; border-bottom: 1px solid #cecece;">
+                                <h5>Setting config</h5>
+                        </div>
+                        <form method="post">
                         <div class="settingGroup">
                                 <div class="settingGroup__label">
-                                    <h4>Password</h4>
+                                    <h4>Old Password</h4>
                                 </div>
                                 <div class="settingGroup__input">
-                                    <input class="input--home-small" type="password">
+                                    <input name="oldpassword" class="input--home-small" type="password">
                                 </div>
                         </div>
                         <div class="settingGroup">
@@ -101,7 +124,7 @@ if ( !getSession('user') ) {
                                     <h4>New password</h4>
                                 </div>
                                 <div class="settingGroup__input">
-                                    <input class="input--home-small" type="password">
+                                    <input name="newpassword" class="input--home-small" type="password">
                                 </div>
                         </div>
                         <div class="settingGroup">
@@ -109,9 +132,13 @@ if ( !getSession('user') ) {
                                     <h4>Confirm password</h4>
                                 </div>
                                 <div class="settingGroup__input">
-                                    <input class="input--home-small" type="password">
+                                    <input name="repeatpassword" class="input--home-small" type="password">
                                 </div>
                         </div>
+                        <div style="display: flex;justify-content: flex-end;">
+                        <input type="submit" name="updatepassword" class="button-blue" value="Update password">
+                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -128,7 +155,6 @@ if ( !getSession('user') ) {
             </div>
         </div>
     </div>
-    </form>
 
 </body>
 <script>

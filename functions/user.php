@@ -62,16 +62,33 @@
         }
     }
 
-    function updateProfile( $email, $fullname, $bio, $website, $instagram, $id){
+    function updateProfile( $email, $fullname, $hobby, $bio, $website, $instagram, $id){
         global $conn;
             $fullname = mysqli_real_escape_string($conn, htmlentities($fullname));
+            $hobby = mysqli_real_escape_string($conn, htmlentities($hobby));
             $email = mysqli_real_escape_string($conn, htmlentities($email));
+            $bio = mysqli_real_escape_string($conn, htmlentities($bio));
             $website = mysqli_real_escape_string($conn, htmlentities($website));
             $instagram = mysqli_real_escape_string($conn, htmlentities($instagram));
         $_SQL = "UPDATE users
-                 SET name = '$fullname',email = '$email',website = '$website',instagram = '$instagram'
+                 SET name = '$fullname',email = '$email',website = '$website', hobby = '$hobby', bio = '$bio', instagram = '$instagram'
                  WHERE id = $id";
 
         return mysqli_query($conn, $_SQL);
 
+    }
+
+    function updatePassword($id, $password, $oldpassword)
+    {
+        global $conn;
+
+            $password = password_hash($password, PASSWORD_DEFAULT);
+            $dbPassword = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM users WHERE id = $id"))['password'];
+            // die($oldpassword);
+            if (password_verify($oldpassword, $dbPassword)){
+                $_SQL = "UPDATE users SET password = '$password' WHERE id = $id";
+                return mysqli_query($conn, $_SQL);
+            } else {
+                return false;
+            }
     }
