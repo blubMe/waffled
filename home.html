@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <!-- // replypopup // -->
     <div id="replyPopup" class="overlay">
         <div class="replayWrapper">
             <div class="replayWrapper__header">
@@ -19,10 +20,31 @@
             </div>
             <div class="replayWrapper__content">
                 <div class="replyInputWrapper">
-                    <div id="input" class="replayInputWrapper__core" contenteditable="true" placeholder="reply here..."></div>
+                    <div id="replyInput" class="replayInputWrapper__core" contenteditable="true" placeholder="reply here..."></div>
                 </div>
             </div>
             <div class="replayWrapper__footer">
+                <button class="button-blue--small">Reply now</button>
+            </div>
+        </div>
+    </div>
+    <!-- create post feed -->
+    <div id="createPostPopup" class="overlay">
+        <div class="createPostWrapper">
+            <div class="createPostWrapper__header">
+                <h4>Create post</h4>
+                <span id="createPostClose">X</span>
+            </div>
+            <div class="createPostWrapper__content">
+                <div class="postInputWrapper">
+                    <div class="postUploadImages">
+                        <input type="file" id="files" accept="image/jpeg, image/jpg" name="files[]" multiple="">
+                    </div>
+                    <div id="postInput" class="postInputWrapper__core" contenteditable="true" placeholder="Post here here...">
+                    </div>
+                </div>
+            </div>
+            <div class="createPostWrapper__footer">
                 <button class="button-blue--small">Reply now</button>
             </div>
         </div>
@@ -307,19 +329,48 @@
             $('#replyPopup').toggle();
             return false;
         });
-        $('#replyPostClose').click(function (){
+        $('#replyPostClose').click(function () {
             $('#replyPopup').hide();
             return false;
         });
-        $('#divB-holder').hide();
-        $('#divB-link').click(function () {
-            $('#divB').toggle(400);
+        $('#createPostPopup').hide();
+        $('#postingAdd').click(function () {
+            $('#createPostPopup').toggle();
+            return false;
+        });
+        $('#createPostClose').click(function () {
+            $('#createPostPopup').hide();
             return false;
         });
     });
 </script>
 <script>
-    
+    $(document).ready(function () {
+        if (window.File && window.FileList && window.FileReader) {
+            $("#files").on("change", function (e) {
+                var files = e.target.files,
+                    filesLength = files.length;
+                for (var i = 0; i < filesLength; i++) {
+                    var f = files[i]
+                    var fileReader = new FileReader();
+                    fileReader.onload = (function (e) {
+                        var file = e.target;
+                        $("<span class=\"pip\">" +
+                            "<img class=\"imageThumb\" src=\"" + e.target.result +
+                            "\" title=\"" + file.name + "\"/>" +
+                            "<br/><span class=\"remove\">Remove image</span>" +
+                            "</span>").insertAfter("#files");
+                        $(".remove").click(function () {
+                            $(this).parent(".pip").remove();
+                        });
+                    });
+                    fileReader.readAsDataURL(f);
+                }
+            });
+        } else {
+            alert("Your browser doesn't support to File API kasian kentod")
+        }
+    });
 </script>
 
 </html>

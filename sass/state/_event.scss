@@ -45,9 +45,49 @@
     content: attr(placeholder);
     display: block; /* For Firefox */
   }
-
+.postInputWrapper {
+    width: 100%;
+    background: white;
+}
+.postInputWrapper__core{
+    padding: 20px 30px;
+    outline: none;
+    color: #999;
+}
 #replyPostClose {
     cursor: pointer;
 }
 
 // create post
+.postUploadImages {
+    width: 100%;
+    background: #F0F0F1;
+    padding: 5px 10px;
+}
+.createPostWrapper {
+    @extend .replayWrapper;
+    width: 500px;
+    .createPostWrapper__header{
+        @extend .replayWrapper__header;
+        border-bottom: 1px solid #e6e6e6;
+    }
+    .createPostWrapper__footer {
+        @extend .replayWrapper__footer;
+        background: white;
+    }
+}
+#createPostClose {
+    @extend #replyPostClose;
+}
+
+// event multiple 
+.pip {
+    display: inline-block;
+    margin: 10px 10px 0 0;
+}
+
+.imageThumb {
+    max-height: 75px;
+    padding: 1px;
+    cursor: pointer;
+}
