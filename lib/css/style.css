@@ -20,6 +20,10 @@ a {
 input {
   outline: none; }
 
+img {
+  user-select: none;
+  -webkit-user-drag: none; }
+
 header {
   width: 100%;
   height: 60px;
