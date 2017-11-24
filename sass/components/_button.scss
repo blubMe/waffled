@@ -1,5 +1,6 @@
 button {
   outline: none;
+  cursor: pointer;
 }
 
 .button {
@@ -60,10 +61,22 @@ button {
   border-radius: 5px;
   text-align: center;
   font-weight: bold;
+  margin-bottom: 10px;
   transition: .3s ease;
+  border: none;
+  display: block;
   &:focus {
     background: #016dcc;
     transition: .3s ease; 
+  }
+}
+
+.button-red {
+  @extend .button-blue;
+  background: #F44646;
+  width: 100%;
+  &:focus{
+    background: #cc3c3c;
   }
 }
 
@@ -81,4 +94,20 @@ button {
   color: #7b7b7b;
   text-align: center;
   font-weight: bold;
+}
+
+.changeImageCoverbutton {
+  background: #FFF;
+  border: none;
+  color: #444;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-weight: bold;
+  min-width: 69px;
+}
+
+.input--home-small {
+  @extend .input--home;
+  padding: 5px 15px;
+  color: #444444!important;
 }
