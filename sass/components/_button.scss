@@ -36,6 +36,10 @@ button {
     background: #F44646!important;
     color: white!important;
   }
+  &:focus{
+    background: #cc3c3c!important;
+    color: white!important;
+  }
 }
 
 .google-button{
