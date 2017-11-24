@@ -4,8 +4,10 @@
     {
         global $conn;
         $post = mysqli_real_escape_string($conn, htmlentities($post));
-        $_SQL = "INSERT INTO posts(id_user, post) VALUES($id ,'$post')";
-        return mysqli_query($conn, $_SQL);
+
+        $_SQL = "INSERT INTO posts (id_user, post) VALUES ($id , '$post')";
+
+         mysqli_query($conn, $_SQL);
     }
 
     function exist ($table, $field, $id)

@@ -16,9 +16,12 @@
 
     require_once('templates/partial/head.php'); // Memasukkan File Partial Bagian Header
     if (post('posted')) {
-        if (!empty(trim(post('post')))){
+        if ( !empty( trim( post('post') ) ) ){
             postUpdate($id_user, post('post'));
+        // die();
+
         }
+        // die();
     }
 ?>
 <body>
@@ -226,6 +229,56 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="articleFeed">
+                                    <div class="articleFeed__header">
+                                        <div class="postFeed">
+                                            <div class="postAvatar">
+                                                <img src="assets/images/toga.jpeg" class="" alt="">
+                                            </div>
+                                            <a href="">Fahmi irsyad khairi</a>
+                                        </div>
+                                        <div class="postReply">
+                                            <button id="replyAdd" class="button--ghost">Reply post</button>
+                                        </div>
+                                    </div>
+                                    <div class="articleFeed__footer">
+                                        <div class="postDesc">
+                                            <span>
+                                                <span class="postDescOwner">Fahmi irsyad khairi - </span> dolor sit amet consectetur adipisicing elit. Nihil,
+                                                quisquam? Atque suscipit, dolor cumque necessitatibus qui, ex facilis modi deserunt
+                                                obcaecati error.</span>
+                                        </div>
+                                        <div class="postCommentShow">
+                                            <div class="postCommentShow__people">
+                                                <div class="CommentAvatar">
+                                                    <img src="assets/images/bg.png" alt="">
+                                                </div>
+                                                <span>
+                                                    <b>Choirul Mh</b>
+                                                </span>
+                                                <span>heheheh...</span>
+                                            </div>
+                                            <div class="postCommentShow__people">
+                                                <div class="CommentAvatar">
+                                                    <img src="assets/images/toga.jpeg" alt="">
+                                                </div>
+                                                <span>
+                                                    <b>Fahmi irsyad Khairi</b>
+                                                </span>
+                                                <span>paan kentod</span>
+                                            </div>
+                                            <div class="postCommentShow__people">
+                                                <div class="CommentAvatar">
+                                                    <img src="assets/images/bg4.jpg" alt="">
+                                                </div>
+                                                <span>
+                                                    <b>Kyoto A</b>
+                                                </span>
+                                                <span>cyka b</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             <div class="articleFeed">
                                 <div class="articleFeed__header">
                                     <div class="postFeed">
