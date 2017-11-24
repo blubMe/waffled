@@ -17,7 +17,7 @@ if ( !getSession('user') ) {
     require_once('templates/partial/head.php'); // Memasukkan File Partial Bagian Header
 
 ?>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <div class="homeWrapper">
         <div class="homeWrapper__leftMenu paddingLeft">
             <div class="profileSettingWrapper">

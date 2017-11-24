@@ -20,6 +20,10 @@ a {
 input {
   outline: none; }
 
+img {
+  user-select: none;
+  -webkit-user-drag: none; }
+
 header {
   width: 100%;
   height: 60px;
@@ -673,26 +677,26 @@ input {
   justify-content: center;
   align-items: center; }
 
-.replayWrapper {
+.replayWrapper, .createPostWrapper {
   width: 400px;
   padding: 5px 0 0 0;
   border-radius: 3px;
   background: white;
   overflow: hidden;
   border-radius: 3px; }
-  .replayWrapper .replayWrapper__header {
+  .replayWrapper .replayWrapper__header, .createPostWrapper .replayWrapper__header, .createPostWrapper .createPostWrapper__header {
     padding: 10px 20px;
     display: flex;
     justify-content: space-between; }
-  .replayWrapper .replyInputWrapper {
+  .replayWrapper .replyInputWrapper, .createPostWrapper .replyInputWrapper {
     width: 100%;
     height: 100px;
     background: #F0F0F1; }
-    .replayWrapper .replyInputWrapper .replayInputWrapper__core {
+    .replayWrapper .replyInputWrapper .replayInputWrapper__core, .createPostWrapper .replyInputWrapper .replayInputWrapper__core {
       padding: 20px 30px;
       outline: none;
       color: #444; }
-  .replayWrapper .replayWrapper__footer {
+  .replayWrapper .replayWrapper__footer, .createPostWrapper .replayWrapper__footer, .createPostWrapper .createPostWrapper__footer {
     padding: 10px 20px 15px 0;
     display: flex;
     justify-content: flex-end;
@@ -703,7 +707,37 @@ input {
   display: block;
   /* For Firefox */ }
 
-#replyPostClose {
+.postInputWrapper {
+  width: 100%;
+  background: white; }
+
+.postInputWrapper__core {
+  padding: 20px 30px;
+  outline: none;
+  color: #999; }
+
+#replyPostClose, #createPostClose {
+  cursor: pointer; }
+
+.postUploadImages {
+  width: 100%;
+  background: #F0F0F1;
+  padding: 5px 10px; }
+
+.createPostWrapper {
+  width: 500px; }
+  .createPostWrapper .createPostWrapper__header {
+    border-bottom: 1px solid #e6e6e6; }
+  .createPostWrapper .createPostWrapper__footer {
+    background: white; }
+
+.pip {
+  display: inline-block;
+  margin: 10px 10px 0 0; }
+
+.imageThumb {
+  max-height: 75px;
+  padding: 1px;
   cursor: pointer; }
 
 /*# sourceMappingURL=style.css.map */
