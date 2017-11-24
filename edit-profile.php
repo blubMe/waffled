@@ -1,3 +1,12 @@
+<?php
+require_once('core/init.php');
+
+if ( !getSession('user') ) {
+        header('location: index.php');
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +23,6 @@
                     <div class="homePageNavbar__wrapper">
                         <div class="homePageNavbar--items">
                             <div class="logo--small">
-                                <?xml version="1.0" standalone="no"?>
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 300 300"
                                     width="40" height="40">
                                     <defs>
@@ -84,7 +92,7 @@
                     </div>
                     </div>
                 </nav>
-            </header>        
+            </header>
     <div class="homeWrapper">
         <div class="homeWrapper__leftMenu paddingLeft">
             <div class="profileSettingWrapper">
