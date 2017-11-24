@@ -5,13 +5,15 @@ if ( !getSession('user') ) {
         header('location: index.php');
     }
 
-    $id_user = selectOneWhere('users', 'username', $_SESSION['user'], 'id');
+    $id_user = selectAuth ('users', $_SESSION['user'])['id'];
+
+
 
     require_once('templates/partial/head.php'); // Memasukkan File Partial Bagian Header
 
 
 ?>
-
+<form method="post">
     <div class="homeWrapper">
         <div class="homeWrapper__leftMenu paddingLeft">
             <div class="profileSettingWrapper">
@@ -35,27 +37,35 @@ if ( !getSession('user') ) {
                     </div>
                     <div class="profileSettting__content">
                         <div class="settingGroup">
-                            <div class="settingGroup__label">
-                                <h4>Nama lengkap</h4>
-                            </div>
-                            <div class="settingGroup__input">
-                                <input class="input--home-small" type="text" value="<?= ucwords(selectOneWhere('users', 'id', $id_user, 'name')); ?>" placeholder="fahmi irysad khairi">
-                            </div>
-                        </div>
-                        <div class="settingGroup">
                                 <div class="settingGroup__label">
                                     <h4>Username</h4>
                                 </div>
                                 <div class="settingGroup__input">
-                                    <input class="input--home-small" value="<?= selectOneWhere('users', 'id', $id_user, 'username'); ?>" type="text" placeholder="@pampam">
+                                    <input class="input--home-small" value="<?= selectOneWhere('users', 'id', $id_user, 'username'); ?>" type="text" placeholder="@pampam" readonly disabled>
                                 </div>
+                        </div>
+                        <div class="settingGroup">
+                            <div class="settingGroup__label">
+                                <h4>Nama lengkap</h4>
+                            </div>
+                            <div class="settingGroup__input">
+                                <input class="input--home-small" name="fullname" type="text" value="<?= ucwords(selectOneWhere('users', 'id', $id_user, 'name')); ?>" placeholder="fahmi irysad khairi">
+                            </div>
+                        </div>
+                        <div class="settingGroup">
+                            <div class="settingGroup__label">
+                                <h4>Email</h4>
+                            </div>
+                            <div class="settingGroup__input">
+                                <input class="input--home-small" name="email" type="email" value="<?= strtolower(selectOneWhere('users', 'id', $id_user, 'email')); ?>" placeholder="fahmi irysad khairi">
+                            </div>
                         </div>
                         <div class="settingGroup">
                                 <div class="settingGroup__label">
                                     <h4>Bio</h4>
                                 </div>
                                 <div class="settingGroup__input">
-                                    <input class="input--home-small" type="text" value="<?= selectOneWhere('users', 'id', $id_user, 'bio'); ?>" placeholder="professional producer , also can design UI/UX.">
+                                    <input class="input--home-small" name="bio" type="text" value="<?= selectOneWhere('users', 'id', $id_user, 'bio'); ?>" placeholder="professional producer , also can design UI/UX.">
                                 </div>
                         </div>
                         <div class="settingGroup">
@@ -63,7 +73,7 @@ if ( !getSession('user') ) {
                                     <h4>Website</h4>
                                 </div>
                                 <div class="settingGroup__input">
-                                    <input class="input--home-small" value="<?= selectOneWhere('users', 'id', $id_user, 'website'); ?>" type="text" placeholder="facebook.com/pampam_AMD">
+                                    <input class="input--home-small" name="website" value="<?= selectOneWhere('users', 'id', $id_user, 'website'); ?>" type="text" placeholder="facebook.com/pampam_AMD">
                                 </div>
                         </div>
                         <div class="settingGroup">
@@ -71,7 +81,7 @@ if ( !getSession('user') ) {
                                     <h4>Instagram</h4>
                                 </div>
                                 <div class="settingGroup__input">
-                                    <input class="input--home-small" value="<?= selectOneWhere('users', 'id', $id_user, 'instagram'); ?>"  type="text" placeholder="@fahmiirsyadk">
+                                    <input class="input--home-small" name="instagram" value="<?= selectOneWhere('users', 'id', $id_user, 'instagram'); ?>"  type="text" placeholder="@fahmiirsyadk">
                                 </div>
                         </div>
                         <div class="settingGroup">
@@ -106,16 +116,27 @@ if ( !getSession('user') ) {
             <div class="barProfileSettingWrapper">
                 <div class="recomendWrapper" style="padding-top: 0;">
                     <div class="recomendWrapper__create">
-                           <button href="" class="button-blue">
+                           <button name="updateProfile" class="button-blue">
                                     Update profile saya
                            </button>
-                            <button href="" class="button-red">
+                            <a href="profile.php" class="button-red">
                                     Batalkan
-                            </button>
+                            </a>
                 </div>
             </div>
         </div>
     </div>
+    </form>
+    <?php
+                                if (post('update')) {
+        // if ( !empty(trim(post('email'))) AND !empty(trim(post('fullname'))) ){
+        //     updateProfile(post('email'), post('fullname'), post('bio'), post('website'), post('instagram'), $id_user );
+        //     // header('location: edit-profile.php');
+        // }
+
+           echo "hajoi";
+        }
+                        ?>
 </body>
 <script>
     $(document).ready(function () {

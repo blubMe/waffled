@@ -8,10 +8,10 @@
         header('location: index.php');
     }
 
-        $id_user = selectOneWhere('users', 'username', $_SESSION['user'], 'id');
-
+        $id_user = selectAuth ('users', $_SESSION['user'])['id'];
 
   require_once('templates/partial/head.php'); // Memasukkan File Partial Bagian Header
+
 ?>
 
     <div class="homeWrapper">
@@ -31,9 +31,14 @@
                     <p><q><?= selectOneWhere('users', 'id', $id_user, 'bio'); ?></q></p>
                 </div>
                 <div class="socialProfile">
+                <?php  if(exist('users', 'website', $id_user)): ?>
                     <p class="socialProfile__facebook"><a target="_blank" href="https://<?= selectOneWhere('users', 'id', $id_user, 'website'); ?>"><?= selectOneWhere('users', 'id', $id_user, 'website'); ?></a></p>
                     |
-                    <p class="socialProfile__instagram"><a target="_blank" href="https://www.instagram.com/<?= selectOneWhere('users', 'id', $id_user, 'i   nstagram'); ?>">Instagram</a></p>
+                <?php endif ?>
+                <?php  if(exist('users', 'instagram', $id_user)): ?>
+                    <p class="socialProfile__instagram"><a target="_blank" href="https://www.instagram.com/<?= selectOneWhere('users', 'id', $id_user, 'instagram'); ?>">Instagram</a></p>
+                <?php endif ?>
+
                 </div>
                 <div class="editProfileWrapper">
                         <a href="edit-profile.php" class="button--editProfile">Edit profile</a>

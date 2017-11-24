@@ -10,22 +10,29 @@
     // Memanggil Fungsi Register User
     if ( post('register') )
     {
-        if ( trim(post('password')) === trim(post('repassword')) ) {
+        if (!empty(trim(post('password'))) AND !empty(trim(post('email'))) AND !empty(trim(post('username'))) AND !empty(trim(post('fullname')))) {
 
-            $_register = Register( post('username'), // Username
-                                   post('fullname'),// Nama Lengkap
-                                   post('email'), // Email
-                                   password_hash(post('password'),PASSWORD_DEFAULT) // Password
-                         );
+            if ( post('password') === post('repassword') ) {
 
-                header('location: register.php');
-                setcookie('error', '0');
+                $_register = Register( post('username'), // Username
+                                    post('fullname'),// Nama Lengkap
+                                    post('email'), // Email
+                                    password_hash(post('password'),PASSWORD_DEFAULT) // Password
+                            );
 
-            } else {
-                  // Jika Password tidak sama dengan Repassword
-                header('location: register.php');
-                setcookie('error', '1');
-            }
+                 Auth(post('username'), post('password'));
+
+                    setcookie('error', '0');
+
+                } else {
+                    // Jika Password tidak sama dengan Repassword
+                    header('location: register.php');
+                    setcookie('error', '1');
+                }
+        } else {
+            // jika ada yang kosong
+            echo "kosong";
+        }
 
     }
 

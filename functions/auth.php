@@ -59,7 +59,7 @@
 
                 // }
                     $_SQL = "INSERT INTO users( username, name, email, password ) VALUES( '$_username', '$_fullname', '$_email', '$_password' )";
-                    return mysqli_query($conn, $_SQL);
+                    mysqli_query($conn, $_SQL);
             } else {
                 // Mengembalikan Error Jika username, email dan password kosong
                 $error = 1;
