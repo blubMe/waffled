@@ -122,7 +122,7 @@ if ( !getSession('user') ) {
                     <div class="recomendWrapper__create">
                            <input type="submit" name="updateProfile" class="button-blue" value="Update profile saya">
                             <a href="profile.php" class="button-red">
-                                    Batalkan
+                                    Kembali
                             </a>
                 </div>
             </div>
