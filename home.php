@@ -79,7 +79,7 @@
                         <input class="input--home" placeholder="search" type="text" style="margin-left: 15px;">
                     </div>
                     <div class="navbarRightMenu">
-                        <a href="">
+                        <a href="profile.php">
                             <div class="face-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate;width: 40px;height: 40px;"
                                     viewBox="0 0 100 125" width="100" height="125">

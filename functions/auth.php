@@ -43,19 +43,23 @@
     }
 
     // Membuat fungsi registrasi user
-    function Register($_username, $_email, $_password)
+    function Register($_username, $_fullname, $_email, $_password)
     {
         global $conn;
 
-            $_username = mysqli_real_escape_string($conn, $_username);
-            $_email = mysqli_real_escape_string($conn, $_email);
-            $_password = mysqli_real_escape_string($conn, $_password);
+            $_username = mysqli_real_escape_string($conn, htmlentities($_username));
+            $_fullname = mysqli_real_escape_string($conn, htmlentities($_fullname));
+            $_email = mysqli_real_escape_string($conn, htmlentities($_email));
+            $_password = mysqli_real_escape_string($conn, htmlentities($_password));
 
-            if  ( !empty(trim($_username)) && !empty(trim($_email)) && !empty(trim($_password)) ) {
+            if  ( !empty(trim($_username)) && !empty(trim($_fullname)) && !empty(trim($_email)) && !empty(trim($_password)) ) {
+                // $_usernameCount = selectAuthCount('users', $_username);
+                // $_usernameCount = selectAuthCount('users', $_username);
+                // if (){
 
-
-                $_SQL = "INSERT INTO users( username, email, password ) VALUES( '$_username', '$_email', '$_password' )";
-
+                // }
+                    $_SQL = "INSERT INTO users( username, name, email, password ) VALUES( '$_username', '$_fullname', '$_email', '$_password' )";
+                    return mysqli_query($conn, $_SQL);
             } else {
                 // Mengembalikan Error Jika username, email dan password kosong
                 $error = 1;
