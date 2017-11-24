@@ -178,6 +178,7 @@
                                         <a href="">Fahmi irsyad khairi</a>
                                     </div>
                                     <div class="postReply">
+                                        <button style="color: #F44646; border-color: #F44646;" class="button--ghost red-ghost">Delete post</button>
                                         <button id="replyAdd" class="button--ghost">Reply post</button>
                                     </div>
                                 </div>
@@ -248,7 +249,8 @@
                                             <a href=""><?= $status['fullname'] ?></a>
                                         </div>
                                         <div class="postReply">
-                                            <button id="replyAdd" class="button--ghost">Reply post</button>
+                                                <button style="color: #F44646; border-color: #F44646;" class="button--ghost">Delete post</button>
+                                                <button class="button--ghost">Reply post</button>
                                         </div>
                                     </div>
                                     <div class="articleFeed__footer">
@@ -300,8 +302,9 @@
                                         <a href="">Fahmi irsyad khairi</a>
                                     </div>
                                     <div class="postReply">
-                                        <button id="" class="button--ghost">Reply post</button>
-                                    </div>
+                                            <button style="color: #F44646; border-color: #F44646;" class="button--ghost">Delete post</button>
+                                            <button class="button--ghost">Reply post</button>
+                                        </div>
                                 </div>
                                 <div class="articleFeed__content">
                                     <div class="filterDown"></div>

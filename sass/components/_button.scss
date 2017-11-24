@@ -30,6 +30,14 @@ button {
   margin-bottom: 15px;
 }
 
+.red-ghost {
+  @extend .button--ghost;
+  &:hover {
+    background: #F44646!important;
+    color: white!important;
+  }
+}
+
 .google-button{
   background: #4285f4!important;
   position: relative;
@@ -85,6 +93,12 @@ button {
   border: none;
   padding: 7px 15px!important;
 }
+
+.button-red--smalling {
+  @extend .button-blue--small;
+  color: #cc3c3c;
+}
+
 // profile 
 .button--editProfile {
   padding: 10px 15px;
