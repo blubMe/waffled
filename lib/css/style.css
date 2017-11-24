@@ -223,7 +223,7 @@ section {
         font-size: 14px; }
     .articleFeed .articleFeed__header .postReply {
       margin-right: 5px; }
-      .articleFeed .articleFeed__header .postReply .button--ghost {
+      .articleFeed .articleFeed__header .postReply .button--ghost, .articleFeed .articleFeed__header .postReply .red-ghost {
         border: 2px solid #0084FF;
         padding: 5px 10px;
         background: transparent;
@@ -233,11 +233,11 @@ section {
         cursor: pointer;
         outline: none;
         transition: .3s ease; }
-        .articleFeed .articleFeed__header .postReply .button--ghost:hover, .articleFeed .articleFeed__header .postReply .button--ghost:focus {
+        .articleFeed .articleFeed__header .postReply .button--ghost:hover, .articleFeed .articleFeed__header .postReply .red-ghost:hover, .articleFeed .articleFeed__header .postReply .button--ghost:focus, .articleFeed .articleFeed__header .postReply .red-ghost:focus {
           background: #0084FF;
           color: white;
           transition: .3s ease; }
-        .articleFeed .articleFeed__header .postReply .button--ghost:focus {
+        .articleFeed .articleFeed__header .postReply .button--ghost:focus, .articleFeed .articleFeed__header .postReply .red-ghost:focus {
           background: #016dcc !important;
           border-color: #016dcc !important; }
 
@@ -548,6 +548,10 @@ button {
   text-align: center;
   margin-bottom: 15px; }
 
+.red-ghost:hover {
+  background: #F44646 !important;
+  color: white !important; }
+
 .google-button {
   background: #4285f4 !important;
   position: relative; }
@@ -559,7 +563,7 @@ button {
     background-color: white;
     padding: 2.5px 3px; }
 
-.button-blue, .button-red, .button-blue--small {
+.button-blue, .button-red, .button-blue--small, .button-red--smalling {
   padding: 10px 50px;
   background: #0084FF;
   color: white;
@@ -570,7 +574,7 @@ button {
   transition: .3s ease;
   border: none;
   display: block; }
-  .button-blue:focus, .button-red:focus, .button-blue--small:focus {
+  .button-blue:focus, .button-red:focus, .button-blue--small:focus, .button-red--smalling:focus {
     background: #016dcc;
     transition: .3s ease; }
 
@@ -580,9 +584,12 @@ button {
   .button-red:focus {
     background: #cc3c3c; }
 
-.button-blue--small {
+.button-blue--small, .button-red--smalling {
   border: none;
   padding: 7px 15px !important; }
+
+.button-red--smalling {
+  color: #cc3c3c; }
 
 .button--editProfile {
   padding: 10px 15px;
