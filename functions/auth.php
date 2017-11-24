@@ -47,9 +47,9 @@
     {
         global $conn;
 
-            $_username = mysqli_real_escape_string($conn, htmlentities($_username));
-            $_fullname = mysqli_real_escape_string($conn, htmlentities($_fullname));
-            $_email = mysqli_real_escape_string($conn, htmlentities($_email));
+            $_username = mysqli_real_escape_string($conn, htmlentities(strtolower($_username)));
+            $_fullname = mysqli_real_escape_string($conn, htmlentities(strtolower($_fullname)));
+            $_email = mysqli_real_escape_string($conn, htmlentities(strtolower($_email)));
             $_password = mysqli_real_escape_string($conn, htmlentities($_password));
 
             if  ( !empty(trim($_username)) && !empty(trim($_fullname)) && !empty(trim($_email)) && !empty(trim($_password)) ) {
