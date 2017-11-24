@@ -24,6 +24,8 @@
             $value = mysqli_real_escape_string($conn, $value);
             $_SQL = "SELECT * FROM $table WHERE $field = '$value'";
             return mysqli_num_rows(mysqli_query($conn, $_SQL));
+
+
     }
 
     function selectOneWhere($table, $field, $value, $fetch)
