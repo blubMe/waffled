@@ -10,6 +10,7 @@ if ( !getSession('user') ) {
         if (post('updateProfile')) {
             if ( !empty(trim(post('email'))) AND !empty(trim(post('fullname'))) ){
                 uploadImage($_FILES['avatar'], $id_user);
+                uploadImageBack($_FILES['backgroundprofile'], $id_user);
                 // die(var_dump($_FILES['avatar']));
                 updateProfile(post('email'), post('fullname'), post('hobi'), post('bio'), post('website'), post('instagram'), $id_user );
             }
@@ -34,15 +35,15 @@ if ( !getSession('user') ) {
                         <div id="pf_foto" class="profileSettingHeader__images" style="background-image: url('assets/images/cover.jpg');" alt="">
                             <div class="profileSettingHeaderImages__header-upload">
                                     <div class="profileAvatar" style="left: 40%; border: 5px solid white; background: #eee;">
-                                            <img id="profileAvatarUpload"src="assets/images/toga.jpeg" alt="gambar profile">
+                                            <img id="profileAvatarUpload"src="<?= selectOneWhere('users', 'id', $id_user, 'avatar'); ?>" alt="gambar profile">
                                             <input id="file-2" type="file" name="avatar" id="file-2"class="inputfile changeImagebutton" style="z-index: 1!important;"/>
                                             <label style="top: 35px; left: 29px; position: absolute;" for="file-2"><svg xmlns="http://www.w3.org/2000/svg" fill="white" stroke="#7c7c7c" stroke-width=".5px" width="40" height="37" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg> <span></span></label>
                                     </div>
                                 <h4><?= "@".selectOneWhere('users', 'id', $id_user, 'username'); ?></h4>
                                 <div class="coverEditButtonWrapper">
                                     <!-- <input id="uploadButtonCover" type="file" name="ImageUpload" class="changeImageCoverbutton" /> -->
-                                    <input type="file" name="file-1[]" id="background" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" multiple="">
-                                    <label for="file-1"><svg xmlns="http://www.w3.org/2000/svg" fill="white" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg> <span></span></label>
+                                    <input type="file" name="backgroundprofile" id="fil[]-1" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" multiple="">
+                                    <label for="backgroundprofile"><svg xmlns="http://www.w3.org/2000/svg" fill="white" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg> <span></span></label>
                                 </div>
                             </div>
                         </div>

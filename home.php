@@ -14,7 +14,7 @@
     }
 
     if (post('deletepost')) {
-        deletePost(post('idpost'));
+        deletePost(post('postiddelete'));
         header('location: home.php');
     }
 
@@ -164,7 +164,7 @@
                         </div>
                         <div>
                                                <!--  -->
-            <?php $_SQL = "SELECT posts.id_user  AS id_user_post, users.name AS fullname, users.username AS username, posts.id AS idpost, posts.post AS posted
+            <?php $_SQL = "SELECT posts.id_user AS id_user_post, users.name AS fullname, users.username AS username, posts.id AS idpost, posts.post AS posted
                            FROM users, posts  WHERE posts.id_user = users.id
                            ORDER BY posts.id DESC";
             $aa = mysqli_query($conn, $_SQL);
@@ -174,14 +174,14 @@
                                     <div class="articleFeed__header">
                                         <div class="postFeed">
                                             <div class="postAvatar">
-                                                <img src="assets/images/toga.jpeg" class="" alt="">
+                                                <img src="<?= selectOneWhere('users', 'id', $status['id_user_post'], 'avatar'); ?>" class="" alt="">
                                             </div>
                                             <a href=""><?= $status['fullname'] ?></a>
                                         </div>
                                         <div class="postReply">
                                             <?php if($_session == 1 AND $status['id_user_post'] == $id_user): ?>
                                             <form method="post">
-                                                <input name="postid" type="hidden" value="<?=$status['idpost']; ?>">
+                                                <input name="postiddelete" type="hidden" value="<?=$status['idpost']; ?>">
                                                 <input type="submit" name="deletepost" value="Delete Post" style="color: #F44646; border-color: #F44646;" class="button--ghost red-ghost">
                                             </form>
                                                 <?php endif ?>
@@ -195,14 +195,14 @@
                                         <div class="postCommentShow">
                                             <!--  -->
                                             <?php
-                                            $sqlcomment= "SELECT users.name AS namauser, comments.comment AS komentar
+                                            $sqlcomment= "SELECT comments.id_user AS userID, users.name AS namauser, comments.comment AS komentar
                                              FROM users, comments
                                              WHERE comments.id_post = $status[idpost] AND comments.id_user = users.id";
                                             $parafans = mysqli_query($conn, $sqlcomment);
                                             while($lambeturah = mysqli_fetch_array($parafans)): ?>
                                             <div class="postCommentShow__people">
                                                 <div class="CommentAvatar">
-                                                    <img src="assets/images/bg.png" alt="">
+                                                    <img src="<?= selectOneWhere('users', 'id', $lambeturah['userID'], 'avatar'); ?>" alt="">
                                                 </div>
                                                 <span>
                                                     <b><?= $lambeturah['namauser'] ?></b>
@@ -211,24 +211,7 @@
                                             </div>
                                             <?php endwhile ?>
                                             <!--  -->
-                                            <div class="postCommentShow__people">
-                                                <div class="CommentAvatar">
-                                                    <img src="assets/images/toga.jpeg" alt="">
-                                                </div>
-                                                <span>
-                                                    <b>Fahmi irsyad Khairi</b>
-                                                </span>
-                                                <span>paan kentod</span>
-                                            </div>
-                                            <div class="postCommentShow__people">
-                                                <div class="CommentAvatar">
-                                                    <img src="assets/images/bg4.jpg" alt="">
-                                                </div>
-                                                <span>
-                                                    <b>Kyoto A</b>
-                                                </span>
-                                                <span>cyka b</span>
-                                            </div>
+
                                         </div>
                                         <div class="replyInputWrapper">
                                             <form action="" method="post" name="replyComment">

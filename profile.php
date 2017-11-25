@@ -20,7 +20,7 @@
                     <div class="bgCoverProfile" style="background-image: url(assets/images/cover.jpg);">
                         <div class="filterDown"></div>
                         <div class="profileAvatar">
-                            <img src="assets/images/toga.jpeg" alt="">
+                            <img src="<?=selectOneWhere('users', 'id', $id_user, 'avatar'); ?>" alt="">
                         </div>
                     </div>
             </div>
@@ -56,7 +56,7 @@
                     <h1>Posts</h1>
                 </div>
                 <div class="postProfileFeed__content">
-                    <?php $_SQL = "SELECT users.avatar AS avatar, posts.post AS posted
+                    <?php $_SQL = "SELECT users.id AS avatar, posts.post AS posted
                            FROM users, posts  WHERE users.id = $id_user
                            ORDER BY posts.id DESC";
             $aa = mysqli_query($conn, $_SQL);
@@ -64,7 +64,7 @@
             ?>
                     <div class="postProfileFeed--items">
                         <div class="postProfileFeedItems--avatar">
-                            <img src="assets/images/toga.jpeg" alt="">
+                            <img src="<?= selectOneWhere('users', 'id', $status['avatar'], 'avatar'); ?>" alt="">
                         </div>
                         <div class="postProfileFeedItems--content">
                             <!-- <div class="postProfileFeedItems--images">

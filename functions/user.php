@@ -2,15 +2,60 @@
 
     function uploadImage($image, $name)
     {
-        // $extension = basename($image['name']);
-        // $from = $image['tmp_name'];
-        $uploadTo = "assets/avatar/";
+        global $conn;
+        $ex = pathinfo($image['name'],PATHINFO_EXTENSION);
+        $filename = str_replace($ex,'', $image['name']);
+        $filename = $name.'.'.$ex;
+        $uploadTo = "assets/avatar/".$filename;
 
-        // if ($image['size'] > 0 AND $image['size'] < 500000 ) {
-            // if ( pathinfo($image) == jpg | pathinfo($image) == jpeg | pathinfo($image) == png){
-             return move_uploaded_file($image["tmp_name"], $uploadTo);
-            // }
-        // }
+
+        if ($image['size'] > 0 AND $image['size'] < 500000 ) {
+            if ( pathinfo($image['name'],PATHINFO_EXTENSION) == "jpg" || pathinfo($image,PATHINFO_EXTENSION) == "jpeg" || pathinfo($image,PATHINFO_EXTENSION) == "png"){
+
+                $_SQLd = "SELECT avatar FROM users WHERE id = $name";
+                $fileDB = mysqli_fetch_array(mysqli_query($conn, $_SQLd))['avatar'];
+                if (!empty($fileDB)){
+                    unset($fileDB);
+                }
+
+                move_uploaded_file($image["tmp_name"], $uploadTo);
+
+                $_SQL = "UPDATE users SET avatar = '$uploadTo' WHERE id = $name";
+                mysqli_query($conn, $_SQL);
+                header('location: edit-profile.php');
+            }
+        }
+
+
+    }
+
+    function uploadImageBack($image, $name)
+    {
+        global $conn;
+        $ex = pathinfo($image['name'],PATHINFO_EXTENSION);
+        $filename = str_replace($ex,'', $image['name']);
+        $filename = $name.'.'.$ex;
+        $uploadTo = "assets/background/".$filename;
+
+
+        if ($image['size'] > 0 AND $image['size'] < 500000 ) {
+            if ( pathinfo($image['name'],PATHINFO_EXTENSION) == "jpg" || pathinfo($image,PATHINFO_EXTENSION) == "jpeg" || pathinfo($image,PATHINFO_EXTENSION) == "png"){
+
+                $_SQLd = "SELECT background FROM users WHERE id = $name";
+                $fileDB = mysqli_fetch_array(mysqli_query($conn, $_SQLd))['background'];
+                if (!empty($fileDB)){
+                    unset($fileDB);
+                }
+
+                move_uploaded_file($image["tmp_name"], $uploadTo);
+
+                $_SQL = "UPDATE users SET background = '$uploadTo' WHERE id = $name";
+                mysqli_query($conn, $_SQL);
+                header('location: edit-profile.php');
+            }
+        }
+
+
     }
 
     function comment($id_user, $comment, $postid)
@@ -23,7 +68,8 @@
     function deletePost($idpost){
         global $conn;
         $_SQL = "DELETE FROM posts WHERE id= $idpost";
-        return mysqli_query($conn, $_SQL);
+     mysqli_query($conn, $_SQL);
+        header('location: home.php');
     }
 
     function postUpdate($id, $post)
