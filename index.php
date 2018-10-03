@@ -18,7 +18,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <link rel="icon" href="" type="image/png"> -->
     <link rel="stylesheet" href="lib/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
@@ -48,7 +47,7 @@
       </div>
       <div class="wrap-login__form">
         <div class="wrap-login__form__header">
-          <h4>Logo_Here</h4>
+          <h4>Logonya disini</h4>
         </div>
         <form class="form-login" method="post">
           <input class="login-input" type="text" name="username" value="" placeholder="Email">
